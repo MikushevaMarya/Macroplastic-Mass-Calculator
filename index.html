@@ -1,0 +1,2454 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <style>
+      /* Specilly used for Firefox */
+     input[type=number] {
+       -moz-appearance: textfield;
+     }
+      /* Chrome, Safari, Edge, Opera */
+     input::-webkit-outer-spin-button,
+     input::-webkit-inner-spin-button {
+       -webkit-appearance: none;
+       margin: 0;
+     }
+        </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script id="rendered-js">
+
+
+function calculateTotal()
+{
+  let average_mass={
+    bag_xxs: 0.1,
+    bag_xs: 0.4,
+    bag_s: 2.5,
+    bag_m: 2.9,
+    bag_l: 13.8,
+    bag_xl: 68.2,
+    bottle_xxs: 2.4,
+    bottle_xs: 11.6,
+    bottle_s: 20.1,
+    bottle_m: 28.6,
+    bottle_l: 181.9,
+    bottle_xl: 671.3,
+    container_xxs: 4.6,
+    container_xs: 6.4,
+    container_s: 11.9,
+    container_m: 29.8,
+    container_l: 103.5,
+    container_xl: 1910,
+    cover_xxs: 0.2,
+    cover_xs: 0.7,
+    cover_s: 3,
+    cover_m: 4.6,
+    cover_l: 8.5,
+    cover_xl: 41.3,
+    gloves_xxs: 0.2,
+    gloves_xs: 1,
+    gloves_s: 4.4,
+    gloves_m: 5.4,
+    gloves_l: 42.3,
+    gloves_xl: 199.3,
+    rope_xxs: 2.1,
+    rope_xs: 20.9,
+    rope_s: 118.5,
+    rope_m: 670,
+    rope_l: 2029.9,
+    rope_xl: 4577.8,
+    net_xxs: 0.3,
+    net_xs: 0.5,
+    net_s: 1.2,
+    net_m: 2.3,
+    net_l: 3.6,
+    net_xl: 22247.5,
+    boxes_plastic_m: 90.3,
+    boxes_plastic_l: 147.8,
+    boxes_plastic_xl: 637.3,
+    boxes_polystyrene_m: 3128.2,
+    boxes_polystyrene_l: 6710.6,
+    boxes_polystyrene_xl: 18753.8,
+    buoys_m: 2671.4,
+    buoys_l: 6640,
+    buoys_xl: 20500,
+    sheets_xxs: 0.3,
+    sheets_xs: 0.7,
+    sheets_s: 1.3,
+    sheets_m: 1.7,
+    sheets_l: 14.9,
+    sheets_xl: 95.4,
+    foam_xxs: 0.2,
+    foam_xs: 0.7,
+    foam_s: 6.2,
+    foam_m: 6.2,
+    foam_l: 19.2,
+    foam_xl: 31.9,
+    plastic_pieces_xxs: 1.8,
+    plastic_pieces_xs: 2.9,
+    plastic_pieces_s: 3.1,
+    plastic_pieces_m: 5.2,
+    plastic_pieces_l: 414.1,
+    plastic_pieces_xl: 1231,
+    polystyrene_pieces_xxs: 0.2,
+    polystyrene_pieces_xs: 0.9,
+    polystyrene_pieces_s: 1.9,
+    polystyrene_pieces_m: 3.6,
+    polystyrene_pieces_l: 21.1,
+    polystyrene_pieces_xl: 692.9,
+    cloth_xxs: 1,
+    cloth_xs: 3.0,
+    cloth_s: 9.5,
+    cloth_m: 22.4,
+    cloth_l: 81.2,
+    cloth_xl: 1733.8,
+    granules_xxs: 0.1,
+    granules_xs: 2,
+    granules_s: 6.7,
+    granules_m: 7.2,
+    granules_l: 25.2,
+    granules_xl: 93.2,
+    other_xxs: 1.9,
+    other_xs: 4.4,
+    other_s: 5.8,
+    other_m: 6.8,
+    other_l: 87.5,
+    other_xl: 1219.5,
+  };
+  let mass={}
+  
+  // bag
+  mass.bag_xxs = ($("#qty_bag_xxs").val() * average_mass.bag_xxs)
+  $("#mass_bag_xxs").val(mass.bag_xxs);
+
+  mass.bag_xs = ($("#qty_bag_xs").val() * average_mass.bag_xs)
+  $("#mass_bag_xs").val(mass.bag_xs);
+
+  mass.bag_s = ($("#qty_bag_s").val() * average_mass.bag_s)
+  $("#mass_bag_s").val(mass.bag_s);
+
+  mass.bag_m = ($("#qty_bag_m").val() * average_mass.bag_m)
+  $("#mass_bag_m").val(mass.bag_m);
+
+  mass.bag_l = ($("#qty_bag_l").val() * average_mass.bag_l)
+  $("#mass_bag_l").val(mass.bag_l);
+
+  mass.bag_xl = ($("#qty_bag_xl").val() * average_mass.bag_xl )
+  $("#mass_bag_xl").val(mass.bag_xl);
+
+  let bag = mass.bag_xxs + mass.bag_xs + mass.bag_s + mass.bag_m + mass.bag_l + mass.bag_xl;
+  $("#total_bag").text(bag);  
+
+  // plastic bottle
+  mass.bottle_xxs = ($("#qty_bottle_xxs").val() * average_mass.bottle_xxs)
+  $("#mass_bottle_xxs").val(mass.bottle_xxs);
+
+  mass.bottle_xs = ($("#qty_bottle_xs").val() * average_mass.bottle_xs)
+  $("#mass_bottle_xs").val(mass.bottle_xs);
+
+  mass.bottle_s = ($("#qty_bottle_s").val() * average_mass.bottle_s)
+  $("#mass_bottle_s").val(mass.bottle_s);
+
+  mass.bottle_m = ($("#qty_bottle_m").val() * average_mass.bottle_m)
+  $("#mass_bottle_m").val(mass.bottle_m);
+
+  mass.bottle_l = ($("#qty_bottle_l").val() * average_mass.bottle_l)
+  $("#mass_bottle_l").val(mass.bottle_l);
+
+  mass.bottle_xl = ($("#qty_bottle_xl").val() * average_mass.bottle_xl )
+  $("#mass_bottle_xl").val(mass.bottle_xl);
+
+  let bottle = mass.bottle_xxs + mass.bottle_xs + mass.bottle_s + mass.bottle_m + mass.bottle_l + mass.bottle_xl;
+  $("#total_bottle").text(bottle);  
+
+  // plastic container
+  mass.container_xxs = ($("#qty_container_xxs").val() * average_mass.container_xxs)
+  $("#mass_container_xxs").val(mass.container_xxs);
+
+  mass.container_xs = ($("#qty_container_xs").val() * average_mass.container_xs)
+  $("#mass_container_xs").val(mass.container_xs);
+
+  mass.container_s = ($("#qty_container_s").val() * average_mass.container_s)
+  $("#mass_container_s").val(mass.container_s);
+
+  mass.container_m = ($("#qty_container_m").val() * average_mass.container_m)
+  $("#mass_container_m").val(mass.container_m);
+
+  mass.container_l = ($("#qty_container_l").val() * average_mass.container_l)
+  $("#mass_container_l").val(mass.container_l);
+
+  mass.container_xl = ($("#qty_container_xl").val() * average_mass.container_xl )
+  $("#mass_container_xl").val(mass.container_xl);
+
+  let container = mass.container_xxs + mass.container_xs + mass.container_s + mass.container_m + mass.container_l + mass.container_xl;
+  $("#total_container").text(container);  
+
+    // Cover/packaging
+    mass.cover_xxs = ($("#qty_cover_xxs").val() * average_mass.cover_xxs)
+  $("#mass_cover_xxs").val(mass.cover_xxs);
+
+  mass.cover_xs = ($("#qty_cover_xs").val() * average_mass.cover_xs)
+  $("#mass_cover_xs").val(mass.cover_xs);
+
+  mass.cover_s = ($("#qty_cover_s").val() * average_mass.cover_s)
+  $("#mass_cover_s").val(mass.cover_s);
+
+  mass.cover_m = ($("#qty_cover_m").val() * average_mass.cover_m)
+  $("#mass_cover_m").val(mass.cover_m);
+
+  mass.cover_l = ($("#qty_cover_l").val() * average_mass.cover_l)
+  $("#mass_cover_l").val(mass.cover_l);
+
+  mass.cover_xl = ($("#qty_cover_xl").val() * average_mass.cover_xl )
+  $("#mass_cover_xl").val(mass.cover_xl);
+
+  let cover = mass.cover_xxs + mass.cover_xs + mass.cover_s + mass.cover_m + mass.cover_l + mass.cover_xl;
+  $("#total_cover").text(cover);  
+
+  // gloves
+  mass.gloves_xxs = ($("#qty_gloves_xxs").val() * average_mass.gloves_xxs)
+  $("#mass_gloves_xxs").val(mass.gloves_xxs);
+
+  mass.gloves_xs = ($("#qty_gloves_xs").val() * average_mass.gloves_xs)
+  $("#mass_gloves_xs").val(mass.gloves_xs);
+
+  mass.gloves_s = ($("#qty_gloves_s").val() * average_mass.gloves_s)
+  $("#mass_gloves_s").val(mass.gloves_s);
+
+  mass.gloves_m = ($("#qty_gloves_m").val() * average_mass.gloves_m)
+  $("#mass_gloves_m").val(mass.gloves_m);
+
+  mass.gloves_l = ($("#qty_gloves_l").val() * average_mass.gloves_l)
+  $("#mass_gloves_l").val(mass.gloves_l);
+
+  mass.gloves_xl = ($("#qty_gloves_xl").val() * average_mass.gloves_xl )
+  $("#mass_gloves_xl").val(mass.gloves_xl);
+
+  let gloves = mass.gloves_xxs + mass.gloves_xs + mass.gloves_s + mass.gloves_m + mass.gloves_l + mass.gloves_xl;
+  $("#total_gloves").text(gloves);  
+
+  // rope
+  mass.rope_xxs = ($("#qty_rope_xxs").val() * average_mass.rope_xxs)
+  $("#mass_rope_xxs").val(mass.rope_xxs);
+
+  mass.rope_xs = ($("#qty_rope_xs").val() * average_mass.rope_xs)
+  $("#mass_rope_xs").val(mass.rope_xs);
+
+  mass.rope_s = ($("#qty_rope_s").val() * average_mass.rope_s)
+  $("#mass_rope_s").val(mass.rope_s);
+
+  mass.rope_m = ($("#qty_rope_m").val() * average_mass.rope_m)
+  $("#mass_rope_m").val(mass.rope_m);
+
+  mass.rope_l = ($("#qty_rope_l").val() * average_mass.rope_l)
+  $("#mass_rope_l").val(mass.rope_l);
+
+  mass.rope_xl = ($("#qty_rope_xl").val() * average_mass.rope_xl )
+  $("#mass_rope_xl").val(mass.rope_xl);
+
+  let rope = mass.rope_xxs + mass.rope_xs + mass.rope_s + mass.rope_m + mass.rope_l + mass.rope_xl;
+  $("#total_rope").text(rope);  
+
+  // net
+  mass.net_xxs = ($("#qty_net_xxs").val() * average_mass.net_xxs)
+  $("#mass_net_xxs").val(mass.net_xxs);
+
+  mass.net_xs = ($("#qty_net_xs").val() * average_mass.net_xs)
+  $("#mass_net_xs").val(mass.net_xs);
+
+  mass.net_s = ($("#qty_net_s").val() * average_mass.net_s)
+  $("#mass_net_s").val(mass.net_s);
+
+  mass.net_m = ($("#qty_net_m").val() * average_mass.net_m)
+  $("#mass_net_m").val(mass.net_m);
+
+  mass.net_l = ($("#qty_net_l").val() * average_mass.net_l)
+  $("#mass_net_l").val(mass.net_l);
+
+  mass.net_xl = ($("#qty_net_xl").val() * average_mass.net_xl )
+  $("#mass_net_xl").val(mass.net_xl);
+
+  let net = mass.net_xxs + mass.net_xs + mass.net_s + mass.net_m + mass.net_l + mass.net_xl;
+  $("#total_net").text(net);  
+
+  // boxes_plastic
+  mass.boxes_plastic_m = ($("#qty_boxes_plastic_m").val() * average_mass.boxes_plastic_m)
+  $("#mass_boxes_plastic_m").val(mass.boxes_plastic_m);
+
+  mass.boxes_plastic_l = ($("#qty_boxes_plastic_l").val() * average_mass.boxes_plastic_l)
+  $("#mass_boxes_plastic_l").val(mass.boxes_plastic_l);
+
+  mass.boxes_plastic_xl = ($("#qty_boxes_plastic_xl").val() * average_mass.boxes_plastic_xl )
+  $("#mass_boxes_plastic_xl").val(mass.boxes_plastic_xl);
+
+  let boxes_plastic = mass.boxes_plastic_m + mass.boxes_plastic_l + mass.boxes_plastic_xl;
+  $("#total_boxes_plastic").text(boxes_plastic);  
+
+  // boxes_polystyrene
+
+  mass.boxes_polystyrene_m = ($("#qty_boxes_polystyrene_m").val() * average_mass.boxes_polystyrene_m)
+  $("#mass_boxes_polystyrene_m").val(mass.boxes_polystyrene_m);
+
+  mass.boxes_polystyrene_l = ($("#qty_boxes_polystyrene_l").val() * average_mass.boxes_polystyrene_l)
+  $("#mass_boxes_polystyrene_l").val(mass.boxes_polystyrene_l);
+
+  mass.boxes_polystyrene_xl = ($("#qty_boxes_polystyrene_xl").val() * average_mass.boxes_polystyrene_xl )
+  $("#mass_boxes_polystyrene_xl").val(mass.boxes_polystyrene_xl);
+
+  let boxes_polystyrene =mass.boxes_polystyrene_m + mass.boxes_polystyrene_l + mass.boxes_polystyrene_xl;
+  $("#total_boxes_polystyrene").text(boxes_polystyrene);  
+
+    // buoys
+
+  mass.buoys_m = ($("#qty_buoys_m").val() * average_mass.buoys_m)
+  $("#mass_buoys_m").val(mass.buoys_m);
+
+  mass.buoys_l = ($("#qty_buoys_l").val() * average_mass.buoys_l)
+  $("#mass_buoys_l").val(mass.buoys_l);
+
+  mass.buoys_xl = ($("#qty_buoys_xl").val() * average_mass.buoys_xl )
+  $("#mass_buoys_xl").val(mass.buoys_xl);
+
+  let buoys = mass.buoys_m + mass.buoys_l + mass.buoys_xl;
+  $("#total_buoys").text(buoys);  
+
+  // sheets
+  mass.sheets_xxs = ($("#qty_sheets_xxs").val() * average_mass.sheets_xxs)
+  $("#mass_sheets_xxs").val(mass.sheets_xxs);
+
+  mass.sheets_xs = ($("#qty_sheets_xs").val() * average_mass.sheets_xs)
+  $("#mass_sheets_xs").val(mass.sheets_xs);
+
+  mass.sheets_s = ($("#qty_sheets_s").val() * average_mass.sheets_s)
+  $("#mass_sheets_s").val(mass.sheets_s);
+
+  mass.sheets_m = ($("#qty_sheets_m").val() * average_mass.sheets_m)
+  $("#mass_sheets_m").val(mass.sheets_m);
+
+  mass.sheets_l = ($("#qty_sheets_l").val() * average_mass.sheets_l)
+  $("#mass_sheets_l").val(mass.sheets_l);
+
+  mass.sheets_xl = ($("#qty_sheets_xl").val() * average_mass.sheets_xl )
+  $("#mass_sheets_xl").val(mass.sheets_xl);
+
+  let sheets = mass.sheets_xxs + mass.sheets_xs + mass.sheets_s + mass.sheets_m + mass.sheets_l + mass.sheets_xl;
+  $("#total_sheets").text(sheets);  
+
+  // foam
+  mass.foam_xxs = ($("#qty_foam_xxs").val() * average_mass.foam_xxs)
+  $("#mass_foam_xxs").val(mass.foam_xxs);
+
+  mass.foam_xs = ($("#qty_foam_xs").val() * average_mass.foam_xs)
+  $("#mass_foam_xs").val(mass.foam_xs);
+
+  mass.foam_s = ($("#qty_foam_s").val() * average_mass.foam_s)
+  $("#mass_foam_s").val(mass.foam_s);
+
+  mass.foam_m = ($("#qty_foam_m").val() * average_mass.foam_m)
+  $("#mass_foam_m").val(mass.foam_m);
+
+  mass.foam_l = ($("#qty_foam_l").val() * average_mass.foam_l)
+  $("#mass_foam_l").val(mass.foam_l);
+
+  mass.foam_xl = ($("#qty_foam_xl").val() * average_mass.foam_xl )
+  $("#mass_foam_xl").val(mass.foam_xl);
+
+  let foam = mass.foam_xxs + mass.foam_xs + mass.foam_s + mass.foam_m + mass.foam_l + mass.foam_xl;
+  $("#total_foam").text(foam);  
+
+  // plastic_pieces
+  mass.plastic_pieces_xxs = ($("#qty_plastic_pieces_xxs").val() * average_mass.plastic_pieces_xxs)
+  $("#mass_plastic_pieces_xxs").val(mass.plastic_pieces_xxs);
+
+  mass.plastic_pieces_xs = ($("#qty_plastic_pieces_xs").val() * average_mass.plastic_pieces_xs)
+  $("#mass_plastic_pieces_xs").val(mass.plastic_pieces_xs);
+
+  mass.plastic_pieces_s = ($("#qty_plastic_pieces_s").val() * average_mass.plastic_pieces_s)
+  $("#mass_plastic_pieces_s").val(mass.plastic_pieces_s);
+
+  mass.plastic_pieces_m = ($("#qty_plastic_pieces_m").val() * average_mass.plastic_pieces_m)
+  $("#mass_plastic_pieces_m").val(mass.plastic_pieces_m);
+
+  mass.plastic_pieces_l = ($("#qty_plastic_pieces_l").val() * average_mass.plastic_pieces_l)
+  $("#mass_plastic_pieces_l").val(mass.plastic_pieces_l);
+
+  mass.plastic_pieces_xl = ($("#qty_plastic_pieces_xl").val() * average_mass.plastic_pieces_xl )
+  $("#mass_plastic_pieces_xl").val(mass.plastic_pieces_xl);
+
+  let plastic_pieces = mass.plastic_pieces_xxs + mass.plastic_pieces_xs + mass.plastic_pieces_s + mass.plastic_pieces_m + mass.plastic_pieces_l + mass.plastic_pieces_xl;
+  $("#total_plastic_pieces").text(plastic_pieces);  
+
+    // polystyrene_pieces
+    mass.polystyrene_pieces_xxs = ($("#qty_polystyrene_pieces_xxs").val() * average_mass.polystyrene_pieces_xxs)
+  $("#mass_polystyrene_pieces_xxs").val(mass.polystyrene_pieces_xxs);
+
+  mass.polystyrene_pieces_xs = ($("#qty_polystyrene_pieces_xs").val() * average_mass.polystyrene_pieces_xs)
+  $("#mass_polystyrene_pieces_xs").val(mass.polystyrene_pieces_xs);
+
+  mass.polystyrene_pieces_s = ($("#qty_polystyrene_pieces_s").val() * average_mass.polystyrene_pieces_s)
+  $("#mass_polystyrene_pieces_s").val(mass.polystyrene_pieces_s);
+
+  mass.polystyrene_pieces_m = ($("#qty_polystyrene_pieces_m").val() * average_mass.polystyrene_pieces_m)
+  $("#mass_polystyrene_pieces_m").val(mass.polystyrene_pieces_m);
+
+  mass.polystyrene_pieces_l = ($("#qty_polystyrene_pieces_l").val() * average_mass.polystyrene_pieces_l)
+  $("#mass_polystyrene_pieces_l").val(mass.polystyrene_pieces_l);
+
+  mass.polystyrene_pieces_xl = ($("#qty_polystyrene_pieces_xl").val() * average_mass.polystyrene_pieces_xl )
+  $("#mass_polystyrene_pieces_xl").val(mass.polystyrene_pieces_xl);
+
+  let polystyrene_pieces = mass.polystyrene_pieces_xxs + mass.polystyrene_pieces_xs + mass.polystyrene_pieces_s + mass.polystyrene_pieces_m + mass.polystyrene_pieces_l + mass.polystyrene_pieces_xl;
+  $("#total_polystyrene_pieces").text(polystyrene_pieces);  
+
+  // cloth
+  mass.cloth_xxs = ($("#qty_cloth_xxs").val() * average_mass.cloth_xxs)
+  $("#mass_cloth_xxs").val(mass.cloth_xxs);
+
+  mass.cloth_xs = ($("#qty_cloth_xs").val() * average_mass.cloth_xs)
+  $("#mass_cloth_xs").val(mass.cloth_xs);
+
+  mass.cloth_s = ($("#qty_cloth_s").val() * average_mass.cloth_s)
+  $("#mass_cloth_s").val(mass.cloth_s);
+
+  mass.cloth_m = ($("#qty_cloth_m").val() * average_mass.cloth_m)
+  $("#mass_cloth_m").val(mass.cloth_m);
+
+  mass.cloth_l = ($("#qty_cloth_l").val() * average_mass.cloth_l)
+  $("#mass_cloth_l").val(mass.cloth_l);
+
+  mass.cloth_xl = ($("#qty_cloth_xl").val() * average_mass.cloth_xl )
+  $("#mass_cloth_xl").val(mass.cloth_xl);
+
+  let cloth = mass.cloth_xxs + mass.cloth_xs + mass.cloth_s + mass.cloth_m + mass.cloth_l + mass.cloth_xl;
+  $("#total_cloth").text(cloth);  
+
+  // granules
+  mass.granules_xxs = ($("#qty_granules_xxs").val() * average_mass.granules_xxs)
+  $("#mass_granules_xxs").val(mass.granules_xxs);
+
+  mass.granules_xs = ($("#qty_granules_xs").val() * average_mass.granules_xs)
+  $("#mass_granules_xs").val(mass.granules_xs);
+
+  mass.granules_s = ($("#qty_granules_s").val() * average_mass.granules_s)
+  $("#mass_granules_s").val(mass.granules_s);
+
+  mass.granules_m = ($("#qty_granules_m").val() * average_mass.granules_m)
+  $("#mass_granules_m").val(mass.granules_m);
+
+  mass.granules_l = ($("#qty_granules_l").val() * average_mass.granules_l)
+  $("#mass_granules_l").val(mass.granules_l);
+
+  mass.granules_xl = ($("#qty_granules_xl").val() * average_mass.granules_xl )
+  $("#mass_granules_xl").val(mass.granules_xl);
+
+  let granules = mass.granules_xxs + mass.granules_xs + mass.granules_s + mass.granules_m + mass.granules_l + mass.granules_xl;
+  $("#total_granules").text(granules);  
+
+  // other
+  mass.other_xxs = ($("#qty_other_xxs").val() * average_mass.other_xxs)
+  $("#mass_other_xxs").val(mass.other_xxs);
+
+  mass.other_xs = ($("#qty_other_xs").val() * average_mass.other_xs)
+  $("#mass_other_xs").val(mass.other_xs);
+
+  mass.other_s = ($("#qty_other_s").val() * average_mass.other_s)
+  $("#mass_other_s").val(mass.other_s);
+
+  mass.other_m = ($("#qty_other_m").val() * average_mass.other_m)
+  $("#mass_other_m").val(mass.other_m);
+
+  mass.other_l = ($("#qty_other_l").val() * average_mass.other_l)
+  $("#mass_other_l").val(mass.other_l);
+
+  mass.other_xl = ($("#qty_other_xl").val() * average_mass.other_xl )
+  $("#mass_other_xl").val(mass.other_xl);
+
+  let other = mass.other_xxs + mass.other_xs + mass.other_s + mass.other_m + mass.other_l + mass.other_xl;
+  $("#total_other").text(other);  
+
+
+
+  let total = bag + bottle + container + cover + gloves + rope + net + boxes_plastic + boxes_polystyrene + buoys + sheets + foam + plastic_pieces + polystyrene_pieces + cloth + granules + other ;
+
+ 
+  $("#total_value").text(total);  
+  
+}
+
+$(function()
+ {
+    $(".qty").on("change keyup",calculateTotal)
+})
+//# sourceURL=pen.js
+  </script>
+
+
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js"></script>
+<link rel="stylesheet" href="style.css" />
+
+
+
+    </head>
+    <body>
+      <header>
+        <div class="menu">
+          <ul>
+            <li><a href="Калькулятор по размерам.html">Calculator</a></li>
+            <li><a href="Форма.html">Add your data</a></li>
+          </ul>
+        </div>
+      </header>
+      <div class="grid">
+        <!-- Шапка -->
+        <!-- <div class="grid-tr">
+      
+          <div class="grid-td">
+      
+            <div class="item">Size</div>
+      
+          </div>
+      
+          <div class="grid-td">
+      
+            <div class="item">Quantity</div>
+      
+          </div>
+      
+          <div class="grid-td">
+      
+            <div class="item">Mass in grams</div>
+      
+          </div>
+      
+        </div> -->
+
+
+        <!--Bag-->
+        <details>
+          <summary>
+            Bag   <span id="total_bag">0</span> grams
+          </summary>
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+          <!-- 2.5-5 -->
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">2.5 - 5cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number"  class="qty" id="qty_bag_xxs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_bag_xxs"/></div>
+            </div>
+                   
+          </div>
+          <!-- 5-10 -->
+          <div class="grid-tr">
+          
+            <div class="grid-td">
+              <div class="item">5 - 10cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_bag_xs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_bag_xs"/></div>
+            </div>
+        
+          </div>
+          <!-- 10-20 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">10 - 20cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_bag_s"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_bag_s"/></div>
+            </div>
+        
+          </div>
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_bag_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_bag_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_bag_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_bag_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_bag_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_bag_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+        
+        <!--Plastic bottle-->
+        <details>
+          <summary>
+            Plastic bottle  <span id="total_bottle">0</span> grams
+          </summary>
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+          <!-- 2.5-5 -->
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">2.5 - 5cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number"  class="qty" id="qty_bottle_xxs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_bottle_xxs"/></div>
+            </div>
+                   
+          </div>
+          <!-- 5-10 -->
+          <div class="grid-tr">
+          
+            <div class="grid-td">
+              <div class="item">5 - 10cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_bottle_xs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_bottle_xs"/></div>
+            </div>
+        
+          </div>
+          <!-- 10-20 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">10 - 20cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_bottle_s"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_bottle_s"/></div>
+            </div>
+        
+          </div>
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_bottle_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_bottle_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_bottle_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_bottle_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_bottle_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_bottle_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+        <!--Plastic container-->
+        <details>
+          <summary>
+            Plastic container <span id="total_container">0</span> grams
+          </summary>
+
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+
+          <!-- 2.5-5 -->
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">2.5 - 5cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number"  class="qty" id="qty_container_xxs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_container_xxs"/></div>
+            </div>
+                   
+          </div>
+          <!-- 5-10 -->
+          <div class="grid-tr">
+          
+            <div class="grid-td">
+              <div class="item">5 - 10cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_container_xs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_container_xs"/></div>
+            </div>
+        
+          </div>
+          <!-- 10-20 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">10 - 20cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_container_s"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_container_s"/></div>
+            </div>
+        
+          </div>
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_container_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_container_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_container_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_container_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_container_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_container_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+
+        <!--Cover/packaging-->
+        <details>
+          <summary>
+            Cover/packaging <span id="total_cover">0</span> grams
+          </summary>
+
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+
+          <!-- 2.5-5 -->
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">2.5 - 5cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number"  class="qty" id="qty_cover_xxs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_cover_xxs"/></div>
+            </div>
+                   
+          </div>
+          <!-- 5-10 -->
+          <div class="grid-tr">
+          
+            <div class="grid-td">
+              <div class="item">5 - 10cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_cover_xs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_cover_xs"/></div>
+            </div>
+        
+          </div>
+          <!-- 10-20 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">10 - 20cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_cover_s"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_cover_s"/></div>
+            </div>
+        
+          </div>
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_cover_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_cover_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_cover_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_cover_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_cover_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_cover_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Gloves -->
+        <details>
+          <summary>
+            Gloves <span id="total_gloves">0</span> grams
+          </summary>
+
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+
+          <!-- 2.5-5 -->
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">2.5 - 5cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number"  class="qty" id="qty_gloves_xxs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_gloves_xxs"/></div>
+            </div>
+                   
+          </div>
+          <!-- 5-10 -->
+          <div class="grid-tr">
+          
+            <div class="grid-td">
+              <div class="item">5 - 10cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_gloves_xs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_gloves_xs"/></div>
+            </div>
+        
+          </div>
+          <!-- 10-20 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">10 - 20cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_gloves_s"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_gloves_s"/></div>
+            </div>
+        
+          </div>
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_gloves_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_gloves_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_gloves_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_gloves_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_gloves_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_gloves_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Synthetic rope -->
+        <details>
+          <summary>
+            Synthetic rope <span id="total_rope">0</span> grams
+          </summary>
+
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+
+          <!-- 2.5-5 -->
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">2.5 - 5cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number"  class="qty" id="qty_rope_xxs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_rope_xxs"/></div>
+            </div>
+                   
+          </div>
+          <!-- 5-10 -->
+          <div class="grid-tr">
+          
+            <div class="grid-td">
+              <div class="item">5 - 10cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_rope_xs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_rope_xs"/></div>
+            </div>
+        
+          </div>
+          <!-- 10-20 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">10 - 20cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_rope_s"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_rope_s"/></div>
+            </div>
+        
+          </div>
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_rope_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_rope_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_rope_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_rope_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_rope_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_rope_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Fishing net -->
+        <details>
+          <summary>
+            Fishing net <span id="total_net">0</span> grams
+          </summary>
+
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+
+          <!-- 2.5-5 -->
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">2.5 - 5cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number"  class="qty" id="qty_net_xxs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_net_xxs"/></div>
+            </div>
+                   
+          </div>
+          <!-- 5-10 -->
+          <div class="grid-tr">
+          
+            <div class="grid-td">
+              <div class="item">5 - 10cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_net_xs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_net_xs"/></div>
+            </div>
+        
+          </div>
+          <!-- 10-20 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">10 - 20cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_net_s"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_net_s"/></div>
+            </div>
+        
+          </div>
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_net_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_net_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_net_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_net_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_net_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_net_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Fish boxes - plastic -->
+        <details>
+          <summary>
+            Fish boxes - plastic <span id="total_boxes_plastic">0</span> grams
+          </summary>
+
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_boxes_plastic_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_boxes_plastic_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_boxes_plastic_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_boxes_plastic_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_boxes_plastic_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_boxes_plastic_xl"/></div>
+            </div>
+          </div>
+        </details>
+    
+        <!-- Fish boxes - polystyrene -->
+        <details>
+          <summary>
+            Fish boxes - polystyrene <span id="total_boxes_polystyrene">0</span> grams
+          </summary>
+
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+         
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_boxes_polystyrene_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_boxes_polystyrene_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_boxes_polystyrene_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_boxes_polystyrene_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_boxes_polystyrene_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_boxes_polystyrene_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+
+         <!--Buoys-->
+         <details>
+          <summary>
+            Buoys   <span id="total_buoys">0</span> grams
+          </summary>
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+         
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_buoys_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_buoys_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_buoys_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_buoys_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_buoys_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_buoys_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+        <!--Sheets-->
+        <details>
+          <summary>
+            Sheets   <span id="total_sheets">0</span> grams
+          </summary>
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+          <!-- 2.5-5 -->
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">2.5 - 5cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number"  class="qty" id="qty_sheets_xxs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_sheets_xxs"/></div>
+            </div>
+                   
+          </div>
+          <!-- 5-10 -->
+          <div class="grid-tr">
+          
+            <div class="grid-td">
+              <div class="item">5 - 10cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_sheets_xs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_sheets_xs"/></div>
+            </div>
+        
+          </div>
+          <!-- 10-20 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">10 - 20cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_sheets_s"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_sheets_s"/></div>
+            </div>
+        
+          </div>
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_sheets_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_sheets_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_sheets_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_sheets_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_sheets_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_sheets_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+        <!--Foam-->
+        <details>
+          <summary>
+            Foam   <span id="total_foam">0</span> grams
+          </summary>
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+          <!-- 2.5-5 -->
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">2.5 - 5cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number"  class="qty" id="qty_foam_xxs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_foam_xxs"/></div>
+            </div>
+                    
+          </div>
+          <!-- 5-10 -->
+          <div class="grid-tr">
+          
+            <div class="grid-td">
+              <div class="item">5 - 10cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_foam_xs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_foam_xs"/></div>
+            </div>
+        
+          </div>
+          <!-- 10-20 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">10 - 20cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_foam_s"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_foam_s"/></div>
+            </div>
+        
+          </div>
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_foam_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_foam_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_foam_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_foam_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_foam_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_foam_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+        <!--Plastic pieces-->
+        <details>
+          <summary>
+            Plastic pieces   <span id="total_plastic_pieces">0</span> grams
+          </summary>
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+          <!-- 2.5-5 -->
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">2.5 - 5cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number"  class="qty" id="qty_plastic_pieces_xxs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_plastic_pieces_xxs"/></div>
+            </div>
+                   
+          </div>
+          <!-- 5-10 -->
+          <div class="grid-tr">
+          
+            <div class="grid-td">
+              <div class="item">5 - 10cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_plastic_pieces_xs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_plastic_pieces_xs"/></div>
+            </div>
+        
+          </div>
+          <!-- 10-20 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">10 - 20cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_plastic_pieces_s"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_plastic_pieces_s"/></div>
+            </div>
+        
+          </div>
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_plastic_pieces_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_plastic_pieces_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_plastic_pieces_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_plastic_pieces_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_plastic_pieces_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_plastic_pieces_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+        <!--Polystyrene pieces-->
+        <details>
+          <summary>
+            Polystyrene pieces   <span id="total_polystyrene_pieces">0</span> grams
+          </summary>
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+          <!-- 2.5-5 -->
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">2.5 - 5cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number"  class="qty" id="qty_polystyrene_pieces_xxs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_polystyrene_pieces_xxs"/></div>
+            </div>
+                   
+          </div>
+          <!-- 5-10 -->
+          <div class="grid-tr">
+          
+            <div class="grid-td">
+              <div class="item">5 - 10cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_polystyrene_pieces_xs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_polystyrene_pieces_xs"/></div>
+            </div>
+        
+          </div>
+          <!-- 10-20 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">10 - 20cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_polystyrene_pieces_s"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_polystyrene_pieces_s"/></div>
+            </div>
+        
+          </div>
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_polystyrene_pieces_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_polystyrene_pieces_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_polystyrene_pieces_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_polystyrene_pieces_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_polystyrene_pieces_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_polystyrene_pieces_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+        <!--Table cloth-->
+        <details>
+          <summary>
+            Table cloth   <span id="total_cloth">0</span> grams
+          </summary>
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+          <!-- 2.5-5 -->
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">2.5 - 5cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number"  class="qty" id="qty_cloth_xxs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_cloth_xxs"/></div>
+            </div>
+                   
+          </div>
+          <!-- 5-10 -->
+          <div class="grid-tr">
+          
+            <div class="grid-td">
+              <div class="item">5 - 10cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_cloth_xs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_cloth_xs"/></div>
+            </div>
+        
+          </div>
+          <!-- 10-20 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">10 - 20cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_cloth_s"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_cloth_s"/></div>
+            </div>
+        
+          </div>
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_cloth_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_cloth_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_cloth_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_cloth_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_cloth_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_cloth_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+        <!--Polyurethane granules <5mm-->
+        <details>
+          <summary>
+            Polyurethane granules less than 5 mm   <span id="total_granules">0</span> grams
+          </summary>
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+          <!-- 2.5-5 -->
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">2.5 - 5cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number"  class="qty" id="qty_granules_xxs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_granules_xxs"/></div>
+            </div>
+                   
+          </div>
+          <!-- 5-10 -->
+          <div class="grid-tr">
+          
+            <div class="grid-td">
+              <div class="item">5 - 10cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_granules_xs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_granules_xs"/></div>
+            </div>
+        
+          </div>
+          <!-- 10-20 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">10 - 20cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_granules_s"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_granules_s"/></div>
+            </div>
+        
+          </div>
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_granules_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_granules_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_granules_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_granules_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_granules_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_granules_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+        <!--Other plastic/polistyrene items-->
+        <details>
+          <summary>
+            Other plastic/polistyrene items   <span id="total_other">0</span> grams
+          </summary>
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">Size</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Quantity</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item">Mass in grams</div>
+            </div>
+        
+          </div> 
+          <!-- 2.5-5 -->
+          <div class="grid-tr">
+        
+            <div class="grid-td">
+              <div class="item">2.5 - 5cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number"  class="qty" id="qty_other_xxs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_other_xxs"/></div>
+            </div>
+                   
+          </div>
+          <!-- 5-10 -->
+          <div class="grid-tr">
+          
+            <div class="grid-td">
+              <div class="item">5 - 10cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_other_xs"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_other_xs"/></div>
+            </div>
+        
+          </div>
+          <!-- 10-20 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">10 - 20cm</div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_other_s"/></div>
+            </div>
+        
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_other_s"/></div>
+            </div>
+        
+          </div>
+
+          <!-- 20-30 -->
+          <div class="grid-tr">
+            
+            <div class="grid-td">
+              <div class="item">20 - 30cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_other_m"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_other_m"/></div>
+            </div>
+  
+          </div>
+
+          <!-- 30-50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">30 - 50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_other_l"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_other_l"/></div>
+            </div>
+  
+          </div>
+
+          <!-- >50 -->
+          <div class="grid-tr">
+              
+            <div class="grid-td">
+              <div class="item">>50cm</div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" class="qty" id="qty_other_xl"/></div>
+            </div>
+  
+            <div class="grid-td">
+              <div class="item"><input type="number" readonly value="0" class="mass" id="mass_other_xl"/></div>
+            </div>
+          </div>
+        </details>
+
+
+        <div class="grid-tr ">
+          <div class="col-9 text-right total">
+          Total
+          </div>
+          
+          <div class="col-2 total-val">
+            <span id="total_value">0</span> grams
+          </div>
+        </div>
+  
+      </div>
+    </body>
+</html>
+   
+
+  
