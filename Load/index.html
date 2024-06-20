@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css" />
+    </head>
+<body>
+    <header>
+        <div class="menu">
+          <ul>
+            <li><a href="Калькулятор по размерам.html">Calculator</a></li>
+            <li><a href="Форма.html">Add your data</a></li>
+            <li><a href="Loading.html">Loading your file</a></li>
+          </ul>
+        </div>
+    </header>
+    <fieldset>  
+
+      <div class="file-upload">
+        <label for="csvFile">
+          <input type="file" id="csvFile" accept=".csv" autocomplete="off"/>
+          <span>Loading</span>
+        </label>
+      </div>      
+      <input type="file" id="csvFile" accept=".csv" autocomplete="off" style="display: none;"/>    
+      <br>
+      <label>Столбец 1:</label><input type="number" id="column1" min="0" value="16" autocomplete="on"/>
+      <br>
+      <label>Столбец 2:</label><input type="number" id="column2" min="0" value="17" autocomplete="on"/>
+      <br>
+      <button onclick="handleFiles()">Calculate</button>
+    </fieldset>
+   
+
+    <p id="output"></p>
+    <p id="output_bag"></p>
+    <p id="output_bottle"></p>
+    <p id="output_container"></p>
+    <p id="output_cover"></p>
+    <p id="output_gloves"></p>
+    <p id="output_rope"></p>
+    <p id="output_net"></p>
+    <p id="output_boxes_plastic"></p>
+    <p id="output_boxes_polystyrene"></p>
+    <p id="output_buoys"></p>
+    <p id="output_sheets"></p>
+    <p id="output_foam"></p>
+    <p id="output_plastic_pieces"></p>
+    <p id="output_polystyrene_pieces"></p>
+    <p id="output_cloth"></p>
+    <p id="output_granules"></p>
+    <p id="output_other"></p>
+
+
+<script>
+  document.getElementById('csvFile').onchange = function () {
+    document.querySelector('.file-upload span').textContent = this.files[0].name;
+  }
+  function showElements() {
+    var hiddenElements = document.getElementById("hiddenElements");
+    if (hiddenElements.style.display === "none") {
+      hiddenElements.style.display = "block";
+    } else {
+      hiddenElements.style.display = "none";
+    }
+  }
+
+
+
+    function handleFiles() {
+      const fileInput = document.getElementById('csvFile');
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+
+      const column1 = document.getElementById('column1').value - 1; // -1, потому что индексация начинается с 0
+      const column2 = document.getElementById('column2').value - 1; // -1, потому что индексация начинается с 0
+
+
+
+      reader.onload = function(e) {
+        const contents = e.target.result;
+        const lines = contents.split('\n');
+        let count_bag_xxs = 0;
+        let average_mass={
+            bag_xxs: 0.1,
+            bag_xs: 0.4,
+            bag_s: 2.5,
+            bag_m: 2.9,
+            bag_l: 13.8,
+            bag_xl: 68.2,
+            bottle_xxs: 2.4,
+            bottle_xs: 11.6,
+            bottle_s: 20.1,
+            bottle_m: 28.6,
+            bottle_l: 181.9,
+            bottle_xl: 671.3,
+            container_xxs: 4.6,
+            container_xs: 6.4,
+            container_s: 11.9,
+            container_m: 29.8,
+            container_l: 103.5,
+            container_xl: 1910,
+            cover_xxs: 0.2,
+            cover_xs: 0.7,
+            cover_s: 3,
+            cover_m: 4.6,
+            cover_l: 8.5,
+            cover_xl: 41.3,
+            gloves_xxs: 0.2,
+            gloves_xs: 1,
+            gloves_s: 4.4,
+            gloves_m: 5.4,
+            gloves_l: 42.3,
+            gloves_xl: 199.3,
+            rope_xxs: 2.1,
+            rope_xs: 20.9,
+            rope_s: 118.5,
+            rope_m: 670,
+            rope_l: 2029.9,
+            rope_xl: 4577.8,
+            net_xxs: 0.3,
+            net_xs: 0.5,
+            net_s: 1.2,
+            net_m: 2.3,
+            net_l: 3.6,
+            net_xl: 22247.5,
+            boxes_plastic_m: 90.3,
+            boxes_plastic_l: 147.8,
+            boxes_plastic_xl: 637.3,
+            boxes_polystyrene_m: 3128.2,
+            boxes_polystyrene_l: 6710.6,
+            boxes_polystyrene_xl: 18753.8,
+            buoys_m: 2671.4,
+            buoys_l: 6640,
+            buoys_xl: 20500,
+            sheets_xxs: 0.3,
+            sheets_xs: 0.7,
+            sheets_s: 1.3,
+            sheets_m: 1.7,
+            sheets_l: 14.9,
+            sheets_xl: 95.4,
+            foam_xxs: 0.2,
+            foam_xs: 0.7,
+            foam_s: 6.2,
+            foam_m: 6.2,
+            foam_l: 19.2,
+            foam_xl: 31.9,
+            plastic_pieces_xxs: 1.8,
+            plastic_pieces_xs: 2.9,
+            plastic_pieces_s: 3.1,
+            plastic_pieces_m: 5.2,
+            plastic_pieces_l: 414.1,
+            plastic_pieces_xl: 1231,
+            polystyrene_pieces_xxs: 0.2,
+            polystyrene_pieces_xs: 0.9,
+            polystyrene_pieces_s: 1.9,
+            polystyrene_pieces_m: 3.6,
+            polystyrene_pieces_l: 21.1,
+            polystyrene_pieces_xl: 692.9,
+            cloth_xxs: 1,
+            cloth_xs: 3.0,
+            cloth_s: 9.5,
+            cloth_m: 22.4,
+            cloth_l: 81.2,
+            cloth_xl: 1733.8,
+            granules_xxs: 0.1,
+            granules_xs: 2,
+            granules_s: 6.7,
+            granules_m: 7.2,
+            granules_l: 25.2,
+            granules_xl: 93.2,
+            other_xxs: 1.9,
+            other_xs: 4.4,
+            other_s: 5.8,
+            other_m: 6.8,
+            other_l: 87.5,
+            other_xl: 1219.5,
+        };
+  let mass={}
+
+//   Bag
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Bag" && values[column2] === "2.5 - 5cm") { 
+            count_bag_xxs++;
+          }
+        }
+        mass.bag_xxs = count_bag_xxs * average_mass.bag_xxs; 
+        
+        let count_bag_xs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Bag" && values[column2] === "5 - 10cm") { 
+            count_bag_xs++;
+          }
+        }
+        mass.bag_xs = count_bag_xs * average_mass.bag_xs; 
+
+        let count_bag_s = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Bag" && values[column2] === "10 - 20cm") { 
+            count_bag_s++;
+          }
+        }
+        mass.bag_s = count_bag_s * average_mass.bag_s;
+
+        let count_bag_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Bag" && values[column2] === "20 - 30cm") { 
+            count_bag_m++;
+          }
+        }
+        mass.bag_m = count_bag_m * average_mass.bag_m; 
+
+        let count_bag_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Bag" && values[column2] === "30 - 50cm") { 
+            count_bag_l++;
+          }
+        }
+        mass.bag_l = count_bag_l * average_mass.bag_l; 
+
+        let count_bag_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Bag" && values[column2] === "> 50cm") { 
+            count_bag_xl++;
+          }
+        }
+        mass.bag_xl = count_bag_xl * average_mass.bag_xl; 
+        let bag = mass.bag_xxs + mass.bag_xs + mass.bag_s + mass.bag_m + mass.bag_l + mass.bag_xl;
+
+        // plastic bottle
+        let count_bottle_xxs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic bottle" && values[column2] === "2.5 - 5cm") { 
+            count_bottle_xxs++;
+          }
+        }
+        mass.bottle_xxs = count_bottle_xxs * average_mass.bottle_xxs; 
+        
+        let count_bottle_xs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic bottle" && values[column2] === "5 - 10cm") { 
+            count_bottle_xs++;
+          }
+        }
+        mass.bottle_xs = count_bottle_xs * average_mass.bottle_xs; 
+
+        let count_bottle_s = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic bottle" && values[column2] === "10 - 20cm") { 
+            count_bottle_s++;
+          }
+        }
+        mass.bottle_s = count_bottle_s * average_mass.bottle_s;
+
+        let count_bottle_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic bottle" && values[column2] === "20 - 30cm") { 
+            count_bottle_m++;
+          }
+        }
+        mass.bottle_m = count_bottle_m * average_mass.bottle_m; 
+
+        let count_bottle_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic bottle" && values[column2] === "30 - 50cm") { 
+            count_bottle_l++;
+          }
+        }
+        mass.bottle_l = count_bottle_l * average_mass.bottle_l; 
+
+        let count_bottle_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic bottle" && values[column2] === "> 50cm") { 
+            count_bottle_xl++;
+          }
+        }
+        mass.bottle_xl = count_bottle_xl * average_mass.bottle_xl; 
+        let bottle = mass.bottle_xxs + mass.bottle_xs + mass.bottle_s + mass.bottle_m + mass.bottle_l + mass.bottle_xl;
+
+        // Plastic container
+        let count_container_xxs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic container" && values[column2] === "2.5 - 5cm") { 
+            count_container_xxs++;
+          }
+        }
+        mass.container_xxs = count_container_xxs * average_mass.container_xxs; 
+        
+        let count_container_xs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic container" && values[column2] === "5 - 10cm") { 
+            count_container_xs++;
+          }
+        }
+        mass.container_xs = count_container_xs * average_mass.container_xs; 
+
+        let count_container_s = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic container" && values[column2] === "10 - 20cm") { 
+            count_container_s++;
+          }
+        }
+        mass.container_s = count_container_s * average_mass.container_s;
+
+        let count_container_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic container" && values[column2] === "20 - 30cm") { 
+            count_container_m++;
+          }
+        }
+        mass.container_m = count_container_m * average_mass.container_m; 
+
+        let count_container_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic container" && values[column2] === "30 - 50cm") { 
+            count_container_l++;
+          }
+        }
+        mass.container_l = count_container_l * average_mass.container_l; 
+
+        let count_container_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic container" && values[column2] === "> 50cm") { 
+            count_container_xl++;
+          }
+        }
+        mass.container_xl = count_container_xl * average_mass.container_xl; 
+        let container = mass.container_xxs + mass.container_xs + mass.container_s + mass.container_m + mass.container_l + mass.container_xl;
+
+        // Cover/packaging
+        let count_cover_xxs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Cover/packaging" && values[column2] === "2.5 - 5cm") { 
+            count_cover_xxs++;
+          }
+        }
+        mass.cover_xxs = count_cover_xxs * average_mass.cover_xxs; 
+        
+        let count_cover_xs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Cover/packaging" && values[column2] === "5 - 10cm") { 
+            count_cover_xs++;
+          }
+        }
+        mass.cover_xs = count_cover_xs * average_mass.cover_xs; 
+
+        let count_cover_s = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Cover/packaging" && values[column2] === "10 - 20cm") { 
+            count_cover_s++;
+          }
+        }
+        mass.cover_s = count_cover_s * average_mass.cover_s;
+
+        let count_cover_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Cover/packaging" && values[column2] === "20 - 30cm") { 
+            count_cover_m++;
+          }
+        }
+        mass.cover_m = count_cover_m * average_mass.cover_m; 
+
+        let count_cover_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Cover/packaging" && values[column2] === "30 - 50cm") { 
+            count_cover_l++;
+          }
+        }
+        mass.cover_l = count_cover_l * average_mass.cover_l; 
+
+        let count_cover_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Cover/packaging" && values[column2] === "> 50cm") { 
+            count_cover_xl++;
+          }
+        }
+        mass.cover_xl = count_cover_xl * average_mass.cover_xl; 
+        let cover = mass.cover_xxs + mass.cover_xs + mass.cover_s + mass.cover_m + mass.cover_l + mass.cover_xl;
+
+        // Gloves
+        let count_gloves_xxs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Gloves" && values[column2] === "2.5 - 5cm") { 
+            count_gloves_xxs++;
+          }
+        }
+        mass.gloves_xxs = count_gloves_xxs * average_mass.gloves_xxs; 
+        
+        let count_gloves_xs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Gloves" && values[column2] === "5 - 10cm") { 
+            count_gloves_xs++;
+          }
+        }
+        mass.gloves_xs = count_gloves_xs * average_mass.gloves_xs; 
+
+        let count_gloves_s = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Gloves" && values[column2] === "10 - 20cm") { 
+            count_gloves_s++;
+          }
+        }
+        mass.gloves_s = count_gloves_s * average_mass.gloves_s;
+
+        let count_gloves_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Gloves" && values[column2] === "20 - 30cm") { 
+            count_gloves_m++;
+          }
+        }
+        mass.gloves_m = count_gloves_m * average_mass.gloves_m; 
+
+        let count_gloves_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Gloves" && values[column2] === "30 - 50cm") { 
+            count_gloves_l++;
+          }
+        }
+        mass.gloves_l = count_gloves_l * average_mass.gloves_l; 
+
+        let count_gloves_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Gloves" && values[column2] === "> 50cm") { 
+            count_gloves_xl++;
+          }
+        }
+        mass.gloves_xl = count_gloves_xl * average_mass.gloves_xl; 
+        let gloves = mass.gloves_xxs + mass.gloves_xs + mass.gloves_s + mass.gloves_m + mass.gloves_l + mass.gloves_xl;
+
+        // Synthetic rope
+        let count_rope_xxs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Synthetic rope" && values[column2] === "2.5 - 5cm") { 
+            count_rope_xxs++;
+          }
+        }
+        mass.rope_xxs = count_rope_xxs * average_mass.rope_xxs; 
+        
+        let count_rope_xs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Synthetic rope" && values[column2] === "5 - 10cm") { 
+            count_rope_xs++;
+          }
+        }
+        mass.rope_xs = count_rope_xs * average_mass.rope_xs; 
+
+        let count_rope_s = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Synthetic rope" && values[column2] === "10 - 20cm") { 
+            count_rope_s++;
+          }
+        }
+        mass.rope_s = count_rope_s * average_mass.rope_s;
+
+        let count_rope_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Synthetic rope" && values[column2] === "20 - 30cm") { 
+            count_rope_m++;
+          }
+        }
+        mass.rope_m = count_rope_m * average_mass.rope_m; 
+
+        let count_rope_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Synthetic rope" && values[column2] === "30 - 50cm") { 
+            count_rope_l++;
+          }
+        }
+        mass.rope_l = count_rope_l * average_mass.rope_l; 
+
+        let count_rope_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Synthetic rope" && values[column2] === "> 50cm") { 
+            count_rope_xl++;
+          }
+        }
+        mass.rope_xl = count_rope_xl * average_mass.rope_xl; 
+        let rope = mass.rope_xxs + mass.rope_xs + mass.rope_s + mass.rope_m + mass.rope_l + mass.rope_xl;
+
+        // Fishing net
+        let count_net_xxs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Fishing net" && values[column2] === "2.5 - 5cm") { 
+            count_net_xxs++;
+          }
+        }
+        mass.net_xxs = count_net_xxs * average_mass.net_xxs; 
+        
+        let count_net_xs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Fishing net" && values[column2] === "5 - 10cm") { 
+            count_net_xs++;
+          }
+        }
+        mass.net_xs = count_net_xs * average_mass.net_xs; 
+
+        let count_net_s = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Fishing net" && values[column2] === "10 - 20cm") { 
+            count_net_s++;
+          }
+        }
+        mass.net_s = count_net_s * average_mass.net_s;
+
+        let count_net_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Fishing net" && values[column2] === "20 - 30cm") { 
+            count_net_m++;
+          }
+        }
+        mass.net_m = count_net_m * average_mass.net_m; 
+
+        let count_net_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Fishing net" && values[column2] === "30 - 50cm") { 
+            count_net_l++;
+          }
+        }
+        mass.net_l = count_net_l * average_mass.net_l; 
+
+        let count_net_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Fishing net" && values[column2] === "> 50cm") { 
+            count_net_xl++;
+          }
+        }
+        mass.net_xl = count_net_xl * average_mass.net_xl; 
+        let net = mass.net_xxs + mass.net_xs + mass.net_s + mass.net_m + mass.net_l + mass.net_xl;
+
+        // Fish boxes - plastic      
+
+        let count_boxes_plastic_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Fish boxes - plastic" && values[column2] === "20 - 30cm") { 
+            count_boxes_plastic_m++;
+          }
+        }
+        mass.boxes_plastic_m = count_boxes_plastic_m * average_mass.boxes_plastic_m; 
+
+        let count_boxes_plastic_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Fish boxes - plastic" && values[column2] === "30 - 50cm") { 
+            count_boxes_plastic_l++;
+          }
+        }
+        mass.boxes_plastic_l = count_boxes_plastic_l * average_mass.boxes_plastic_l; 
+
+        let count_boxes_plastic_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Fish boxes - plastic" && values[column2] === "> 50cm") { 
+            count_boxes_plastic_xl++;
+          }
+        }
+        mass.boxes_plastic_xl = count_boxes_plastic_xl * average_mass.boxes_plastic_xl; 
+        let boxes_plastic = mass.boxes_plastic_m + mass.boxes_plastic_l + mass.boxes_plastic_xl;
+
+        // Fish boxes - polystyrene        
+        let count_boxes_polystyrene_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Fish boxes - polystyrene" && values[column2] === "20 - 30cm") { 
+            count_boxes_polystyrene_m++;
+          }
+        }
+        mass.boxes_polystyrene_m = count_boxes_polystyrene_m * average_mass.boxes_polystyrene_m; 
+
+        let count_boxes_polystyrene_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Fish boxes - polystyrene" && values[column2] === "30 - 50cm") { 
+            count_boxes_polystyrene_l++;
+          }
+        }
+        mass.boxes_polystyrene_l = count_boxes_polystyrene_l * average_mass.boxes_polystyrene_l; 
+
+        let count_boxes_polystyrene_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Fish boxes - polystyrene" && values[column2] === "> 50cm") { 
+            count_boxes_polystyrene_xl++;
+          }
+        }
+        mass.boxes_polystyrene_xl = count_boxes_polystyrene_xl * average_mass.boxes_polystyrene_xl; 
+        let boxes_polystyrene = mass.boxes_polystyrene_m + mass.boxes_polystyrene_l + mass.boxes_polystyrene_xl;
+
+        // Buoys       
+        let count_buoys_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Buoys" && values[column2] === "20 - 30cm") { 
+            count_buoys_m++;
+          }
+        }
+        mass.buoys_m = count_buoys_m * average_mass.buoys_m; 
+
+        let count_buoys_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Buoys" && values[column2] === "30 - 50cm") { 
+            count_buoys_l++;
+          }
+        }
+        mass.buoys_l = count_buoys_l * average_mass.buoys_l; 
+
+        let count_buoys_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Buoys" && values[column2] === "> 50cm") { 
+            count_buoys_xl++;
+          }
+        }
+        mass.buoys_xl = count_buoys_xl * average_mass.buoys_xl; 
+        let buoys =mass.buoys_m + mass.buoys_l + mass.buoys_xl;
+
+        // Sheets
+        let count_sheets_xxs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Sheets" && values[column2] === "2.5 - 5cm") { 
+            count_sheets_xxs++;
+          }
+        }
+        mass.sheets_xxs = count_sheets_xxs * average_mass.sheets_xxs; 
+        
+        let count_sheets_xs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Sheets" && values[column2] === "5 - 10cm") { 
+            count_sheets_xs++;
+          }
+        }
+        mass.sheets_xs = count_sheets_xs * average_mass.sheets_xs; 
+
+        let count_sheets_s = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Sheets" && values[column2] === "10 - 20cm") { 
+            count_sheets_s++;
+          }
+        }
+        mass.sheets_s = count_sheets_s * average_mass.sheets_s;
+
+        let count_sheets_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Sheets" && values[column2] === "20 - 30cm") { 
+            count_sheets_m++;
+          }
+        }
+        mass.sheets_m = count_sheets_m * average_mass.sheets_m; 
+
+        let count_sheets_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Sheets" && values[column2] === "30 - 50cm") { 
+            count_sheets_l++;
+          }
+        }
+        mass.sheets_l = count_sheets_l * average_mass.sheets_l; 
+
+        let count_sheets_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Sheets" && values[column2] === "> 50cm") { 
+            count_sheets_xl++;
+          }
+        }
+        mass.sheets_xl = count_sheets_xl * average_mass.sheets_xl; 
+        let sheets = mass.sheets_xxs + mass.sheets_xs + mass.sheets_s + mass.sheets_m + mass.sheets_l + mass.sheets_xl;
+
+        // Foam
+        let count_foam_xxs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Foam" && values[column2] === "2.5 - 5cm") { 
+            count_foam_xxs++;
+          }
+        }
+        mass.foam_xxs = count_foam_xxs * average_mass.foam_xxs; 
+        
+        let count_foam_xs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Foam" && values[column2] === "5 - 10cm") { 
+            count_foam_xs++;
+          }
+        }
+        mass.foam_xs = count_foam_xs * average_mass.foam_xs; 
+
+        let count_foam_s = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Foam" && values[column2] === "10 - 20cm") { 
+            count_foam_s++;
+          }
+        }
+        mass.foam_s = count_foam_s * average_mass.foam_s;
+
+        let count_foam_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Foam" && values[column2] === "20 - 30cm") { 
+            count_foam_m++;
+          }
+        }
+        mass.foam_m = count_foam_m * average_mass.foam_m; 
+
+        let count_foam_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Foam" && values[column2] === "30 - 50cm") { 
+            count_foam_l++;
+          }
+        }
+        mass.foam_l = count_foam_l * average_mass.foam_l; 
+
+        let count_foam_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Foam" && values[column2] === "> 50cm") { 
+            count_foam_xl++;
+          }
+        }
+        mass.foam_xl = count_foam_xl * average_mass.foam_xl; 
+        let foam = mass.foam_xxs + mass.foam_xs + mass.foam_s + mass.foam_m + mass.foam_l + mass.foam_xl;
+
+        // Plastic pieces 2.5cm - 50cm
+        let count_plastic_pieces_xxs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic pieces 2.5cm - 50cm" && values[column2] === "2.5 - 5cm") { 
+            count_plastic_pieces_xxs++;
+          }
+        }
+        mass.plastic_pieces_xxs = count_plastic_pieces_xxs * average_mass.plastic_pieces_xxs; 
+        
+        let count_plastic_pieces_xs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic pieces 2.5cm - 50cm" && values[column2] === "5 - 10cm") { 
+            count_plastic_pieces_xs++;
+          }
+        }
+        mass.plastic_pieces_xs = count_plastic_pieces_xs * average_mass.plastic_pieces_xs; 
+
+        let count_plastic_pieces_s = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic pieces 2.5cm - 50cm" && values[column2] === "10 - 20cm") { 
+            count_plastic_pieces_s++;
+          }
+        }
+        mass.plastic_pieces_s = count_plastic_pieces_s * average_mass.plastic_pieces_s;
+
+        let count_plastic_pieces_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic pieces 2.5cm - 50cm" && values[column2] === "20 - 30cm") { 
+            count_plastic_pieces_m++;
+          }
+        }
+        mass.plastic_pieces_m = count_plastic_pieces_m * average_mass.plastic_pieces_m; 
+
+        let count_plastic_pieces_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic pieces 2.5cm - 50cm" && values[column2] === "30 - 50cm") { 
+            count_plastic_pieces_l++;
+          }
+        }
+        mass.plastic_pieces_l = count_plastic_pieces_l * average_mass.plastic_pieces_l; 
+
+        let count_plastic_pieces_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Plastic pieces > 50cm" && values[column2] === "> 50cm") { 
+            count_plastic_pieces_xl++;
+          }
+        }
+        mass.plastic_pieces_xl = count_plastic_pieces_xl * average_mass.plastic_pieces_xl; 
+        let plastic_pieces = mass.plastic_pieces_xxs + mass.plastic_pieces_xs + mass.plastic_pieces_s + mass.plastic_pieces_m + mass.plastic_pieces_l + mass.plastic_pieces_xl;
+
+
+         // Polystyrene pieces 2.5 - 50cm
+         let count_polystyrene_pieces_xxs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Polystyrene pieces 2.5 - 50cm" && values[column2] === "2.5 - 5cm") { 
+            count_polystyrene_pieces_xxs++;
+          }
+        }
+        mass.polystyrene_pieces_xxs = count_polystyrene_pieces_xxs * average_mass.polystyrene_pieces_xxs; 
+        
+        let count_polystyrene_pieces_xs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Polystyrene pieces 2.5 - 50cm" && values[column2] === "5 - 10cm") { 
+            count_polystyrene_pieces_xs++;
+          }
+        }
+        mass.polystyrene_pieces_xs = count_polystyrene_pieces_xs * average_mass.polystyrene_pieces_xs; 
+
+        let count_polystyrene_pieces_s = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Polystyrene pieces 2.5 - 50cm" && values[column2] === "10 - 20cm") { 
+            count_polystyrene_pieces_s++;
+          }
+        }
+        mass.polystyrene_pieces_s = count_polystyrene_pieces_s * average_mass.polystyrene_pieces_s;
+
+        let count_polystyrene_pieces_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Polystyrene pieces 2.5 - 50cm" && values[column2] === "20 - 30cm") { 
+            count_polystyrene_pieces_m++;
+          }
+        }
+        mass.polystyrene_pieces_m = count_polystyrene_pieces_m * average_mass.polystyrene_pieces_m; 
+
+        let count_polystyrene_pieces_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Polystyrene pieces 2.5 - 50cm" && values[column2] === "30 - 50cm") { 
+            count_polystyrene_pieces_l++;
+          }
+        }
+        mass.polystyrene_pieces_l = count_polystyrene_pieces_l * average_mass.polystyrene_pieces_l; 
+
+        let count_polystyrene_pieces_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Polystyrene pieces > 50cm" && values[column2] === "> 50cm") { 
+            count_polystyrene_pieces_xl++;
+          }
+        }
+        mass.polystyrene_pieces_xl = count_polystyrene_pieces_xl * average_mass.polystyrene_pieces_xl; 
+        let polystyrene_pieces = mass.polystyrene_pieces_xxs + mass.polystyrene_pieces_xs + mass.polystyrene_pieces_s + mass.polystyrene_pieces_m + mass.polystyrene_pieces_l + mass.polystyrene_pieces_xl;
+
+         // Table cloth
+         let count_cloth_xxs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Table cloth" && values[column2] === "2.5 - 5cm") { 
+            count_cloth_xxs++;
+          }
+        }
+        mass.cloth_xxs = count_cloth_xxs * average_mass.cloth_xxs; 
+        
+        let count_cloth_xs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Table cloth" && values[column2] === "5 - 10cm") { 
+            count_cloth_xs++;
+          }
+        }
+        mass.cloth_xs = count_cloth_xs * average_mass.cloth_xs; 
+
+        let count_cloth_s = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Table cloth" && values[column2] === "10 - 20cm") { 
+            count_cloth_s++;
+          }
+        }
+        mass.cloth_s = count_cloth_s * average_mass.cloth_s;
+
+        let count_cloth_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Table cloth" && values[column2] === "20 - 30cm") { 
+            count_cloth_m++;
+          }
+        }
+        mass.cloth_m = count_cloth_m * average_mass.cloth_m; 
+
+        let count_cloth_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Table cloth" && values[column2] === "30 - 50cm") { 
+            count_cloth_l++;
+          }
+        }
+        mass.cloth_l = count_cloth_l * average_mass.cloth_l; 
+
+        let count_cloth_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Table cloth" && values[column2] === "> 50cm") { 
+            count_cloth_xl++;
+          }
+        }
+        mass.cloth_xl = count_cloth_xl * average_mass.cloth_xl; 
+        let cloth = mass.cloth_xxs + mass.cloth_xs + mass.cloth_s + mass.cloth_m + mass.cloth_l + mass.cloth_xl;
+
+         // Polyurethane granules <5mm
+         let count_granules_xxs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Polyurethane granules <5mm" && values[column2] === "2.5 - 5cm") { 
+            count_granules_xxs++;
+          }
+        }
+        mass.granules_xxs = count_granules_xxs * average_mass.granules_xxs; 
+        
+        let count_granules_xs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Polyurethane granules <5mm" && values[column2] === "5 - 10cm") { 
+            count_granules_xs++;
+          }
+        }
+        mass.granules_xs = count_granules_xs * average_mass.granules_xs; 
+
+        let count_granules_s = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Polyurethane granules <5mm" && values[column2] === "10 - 20cm") { 
+            count_granules_s++;
+          }
+        }
+        mass.granules_s = count_granules_s * average_mass.granules_s;
+
+        let count_granules_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Polyurethane granules <5mm" && values[column2] === "20 - 30cm") { 
+            count_granules_m++;
+          }
+        }
+        mass.granules_m = count_granules_m * average_mass.granules_m; 
+
+        let count_granules_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Polyurethane granules <5mm" && values[column2] === "30 - 50cm") { 
+            count_granules_l++;
+          }
+        }
+        mass.granules_l = count_granules_l * average_mass.granules_l; 
+
+        let count_granules_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Polyurethane granules <5mm" && values[column2] === "> 50cm") { 
+            count_granules_xl++;
+          }
+        }
+        mass.granules_xl = count_granules_xl * average_mass.granules_xl; 
+        let granules = mass.granules_xxs + mass.granules_xs + mass.granules_s + mass.granules_m + mass.granules_l + mass.granules_xl;
+
+         // Other plastic/polistyrene items
+         let count_other_xxs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Other plastic/polistyrene items" && values[column2] === "2.5 - 5cm") { 
+            count_other_xxs++;
+          }
+        }
+        mass.other_xxs = count_other_xxs * average_mass.other_xxs; 
+        
+        let count_other_xs = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Other plastic/polistyrene items" && values[column2] === "5 - 10cm") { 
+            count_other_xs++;
+          }
+        }
+        mass.other_xs = count_other_xs * average_mass.other_xs; 
+
+        let count_other_s = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Other plastic/polistyrene items" && values[column2] === "10 - 20cm") { 
+            count_other_s++;
+          }
+        }
+        mass.other_s = count_other_s * average_mass.other_s;
+
+        let count_other_m = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Other plastic/polistyrene items" && values[column2] === "20 - 30cm") { 
+            count_other_m++;
+          }
+        }
+        mass.other_m = count_other_m * average_mass.other_m; 
+
+        let count_other_l = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Other plastic/polistyrene items" && values[column2] === "30 - 50cm") { 
+            count_other_l++;
+          }
+        }
+        mass.other_l = count_other_l * average_mass.other_l; 
+
+        let count_other_xl = 0;
+        for(let i = 0; i < lines.length; i++) {
+          const values = lines[i].split(';');
+          if(values[column1] === "Other plastic/polistyrene items" && values[column2] === "> 50cm") { 
+            count_other_xl++;
+          }
+        }
+        mass.other_xl = count_other_xl * average_mass.other_xl; 
+        let other = mass.other_xxs + mass.other_xs + mass.other_s + mass.other_m + mass.other_l + mass.other_xl;
+        
+        document.getElementById('output_bag').innerHTML = 'Bag: ' + bag.toFixed(1);
+        document.getElementById('output_bottle').innerHTML = 'Plastic bottle: ' + bottle.toFixed(1) + 'grams';
+        document.getElementById('output_container').innerHTML = 'Plastic container: ' + container.toFixed(1) + 'grams';
+        document.getElementById('output_cover').innerHTML = 'Cover/packaging: ' + cover.toFixed(1) + 'grams';
+        document.getElementById('output_gloves').innerHTML = 'Gloves: ' + gloves.toFixed(1) + 'grams';
+        document.getElementById('output_rope').innerHTML = 'Synthetic rope: ' + rope.toFixed(1) + 'grams';
+        document.getElementById('output_net').innerHTML = 'Fishing net: ' + net.toFixed(1) + 'grams';
+        document.getElementById('output_boxes_plastic').innerHTML = 'Fish boxes - plastic: ' + boxes_plastic.toFixed(1) + 'grams';
+        document.getElementById('output_boxes_polystyrene').innerHTML = 'Fish boxes - polystyrene: ' + boxes_polystyrene.toFixed(1) + 'grams';
+        document.getElementById('output_buoys').innerHTML = 'Buoys: ' + buoys.toFixed(1) + 'grams';
+        document.getElementById('output_sheets').innerHTML = 'Sheets: ' + sheets.toFixed(1) + 'grams';
+        document.getElementById('output_foam').innerHTML = 'Foam: ' + foam.toFixed(1) + 'grams';
+        document.getElementById('output_plastic_pieces').innerHTML = 'Plastic pieces: ' + plastic_pieces.toFixed(1) + 'grams';
+        document.getElementById('output_polystyrene_pieces').innerHTML = 'Polystyrene pieces: ' + polystyrene_pieces.toFixed(1) + 'grams';
+        document.getElementById('output_cloth').innerHTML = 'Table cloth: ' + cloth.toFixed(1) + 'grams';
+        document.getElementById('output_granules').innerHTML = 'Polyurethane granules <5mm: ' + granules.toFixed(1) + 'grams';
+        document.getElementById('output_other').innerHTML = 'Other plastic/polistyrene items: ' + other.toFixed(1) + 'grams';
+        let sum = bag + bottle + container + cover + gloves + rope + net + boxes_plastic + boxes_polystyrene + buoys + sheets + foam + plastic_pieces + polystyrene_pieces + cloth + granules + other;
+        document.getElementById('output').innerHTML = 'Total: ' + sum.toFixed(1) + 'grams';
+        $("#total_value").text(sum.toFixed(1)); 
+      };
+
+      reader.readAsText(file);
+    }
+</script>
+
+</body>
+</html>
