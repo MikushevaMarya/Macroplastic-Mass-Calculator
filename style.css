@@ -1,0 +1,238 @@
+.grid {
+  line-height: 1.5;
+	display: table;	
+	width: 100%;
+	border: none;
+	border-collapse: separate;
+	border-spacing: 5px;
+
+}
+
+.grid-tr {
+	 display: table-row;
+   font-size:1.5rem;
+   font-weight:bold;
+}
+
+.grid-td {
+	display: table-cell;	
+	width: 50%;
+	vertical-align: top;
+	padding: 0;
+}
+
+.total
+{
+  font-size:2.5rem;
+  font-weight:bold;
+}
+.total-val
+{
+  font-size:3rem;
+}
+
+details {
+	/* border: 1px solid #aaa;
+	border-radius: 4px; */
+	padding: 0;
+	width: 	90em;
+}
+  
+summary {
+	font-size: 30px;
+	font-weight: bold;
+	margin: -0.5em -0.5em 0;
+	padding: 0.5em;
+	width: 	100%;
+}
+  
+details[open] {
+	padding: 0.5em;
+	width: 	90em;
+}
+  
+details[open] summary {
+	border-bottom: 1px solid #aaa;
+	margin-bottom: 0.5em;
+	width: 	100%;
+}
+
+.qty {
+	font-size: 16px;
+	height: 2em;
+	width: 25em;
+}
+.mass{
+	font-size: 16px;
+	height: 2em;
+	width: 25em;
+}
+
+header {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.menu {
+	flex-grow: 1;
+}
+.menu ul {
+	display: flex;
+	flex-flow: row nowrap;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.menu li {
+	margin-right: 30px;
+	border: 1px solid black; 
+	padding: 5px;
+	border-radius: 10px;
+	font-size: 30px;
+	font-weight:bold;
+	
+}
+.menu li:last-child {
+	margin-right: 0;
+}
+.menu a {
+	padding: 8px 30px;
+}
+
+.menu ul {
+	display: flex;
+	flex-flow: row nowrap;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	line-height: 18px;
+	list-style: none;
+}
+.menu a{
+	display: block;
+	padding: 8px 10px;
+	/* text-transform: uppercase; */
+	/* letter-spacing: .27em; */
+}
+.menu a {
+	color: #000;
+	text-decoration: none;
+}
+
+fieldset{
+	/* padding:    10px;
+	min-height: 50px;  
+	font-size:    20px;	
+	border-radius:  15px;	 */
+	margin-right: 20px;
+	border: 1px solid black; 
+	padding: 5px;
+	border-radius: 10px;
+	font-size: 20px;
+	font-weight:bold;
+	line-height: 40px;
+}
+
+button {
+	/* display: flex;
+	flex-flow: row nowrap; */
+    width: 10em; /* Ширина кнопки */
+    height: 3em; /* Высота кнопки */
+}
+.file-upload {
+	position: relative;
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 6px 12px;
+	cursor: pointer;
+}
+
+.file-upload input[type=file] {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+  
+.file-upload span {
+	pointer-events: none;
+}
+  
+#output {
+	font-size: 30px;
+	font-weight:bold;
+}
+
+#output_bag {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_bottle {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_container {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_cover {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_gloves {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_rope {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_net {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_boxes_plastic {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_boxes_polystyrene {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_buoys {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_sheets {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_foam {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_plastic_pieces {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_polystyrene_pieces {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_cloth {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_granules {
+	font-size: 20px;
+	font-weight:bold;
+}
+#output_other {
+	font-size: 20px;
+	font-weight:bold;
+}
