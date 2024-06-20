@@ -120,359 +120,359 @@ function calculateTotal()
   
   // bag
   mass.bag_xxs = ($("#qty_bag_xxs").val() * average_mass.bag_xxs)
-  $("#mass_bag_xxs").val(mass.bag_xxs);
+  $("#mass_bag_xxs").val(mass.bag_xxs.toFixed(1));
 
   mass.bag_xs = ($("#qty_bag_xs").val() * average_mass.bag_xs)
-  $("#mass_bag_xs").val(mass.bag_xs);
+  $("#mass_bag_xs").val(mass.bag_xs.toFixed(1));
 
   mass.bag_s = ($("#qty_bag_s").val() * average_mass.bag_s)
-  $("#mass_bag_s").val(mass.bag_s);
+  $("#mass_bag_s").val(mass.bag_s.toFixed(1));
 
   mass.bag_m = ($("#qty_bag_m").val() * average_mass.bag_m)
-  $("#mass_bag_m").val(mass.bag_m);
+  $("#mass_bag_m").val(mass.bag_m.toFixed(1));
 
   mass.bag_l = ($("#qty_bag_l").val() * average_mass.bag_l)
-  $("#mass_bag_l").val(mass.bag_l);
+  $("#mass_bag_l").val(mass.bag_l.toFixed(1));
 
   mass.bag_xl = ($("#qty_bag_xl").val() * average_mass.bag_xl )
-  $("#mass_bag_xl").val(mass.bag_xl);
+  $("#mass_bag_xl").val(mass.bag_xl.toFixed(1));
 
   let bag = mass.bag_xxs + mass.bag_xs + mass.bag_s + mass.bag_m + mass.bag_l + mass.bag_xl;
-  $("#total_bag").text(bag);  
+  $("#total_bag").text(bag.toFixed(1));  
 
   // plastic bottle
   mass.bottle_xxs = ($("#qty_bottle_xxs").val() * average_mass.bottle_xxs)
-  $("#mass_bottle_xxs").val(mass.bottle_xxs);
+  $("#mass_bottle_xxs").val(mass.bottle_xxs.toFixed(1));
 
   mass.bottle_xs = ($("#qty_bottle_xs").val() * average_mass.bottle_xs)
-  $("#mass_bottle_xs").val(mass.bottle_xs);
+  $("#mass_bottle_xs").val(mass.bottle_xs.toFixed(1));
 
   mass.bottle_s = ($("#qty_bottle_s").val() * average_mass.bottle_s)
-  $("#mass_bottle_s").val(mass.bottle_s);
+  $("#mass_bottle_s").val(mass.bottle_s.toFixed(1));
 
   mass.bottle_m = ($("#qty_bottle_m").val() * average_mass.bottle_m)
-  $("#mass_bottle_m").val(mass.bottle_m);
+  $("#mass_bottle_m").val(mass.bottle_m.toFixed(1));
 
   mass.bottle_l = ($("#qty_bottle_l").val() * average_mass.bottle_l)
-  $("#mass_bottle_l").val(mass.bottle_l);
+  $("#mass_bottle_l").val(mass.bottle_l.toFixed(1));
 
   mass.bottle_xl = ($("#qty_bottle_xl").val() * average_mass.bottle_xl )
-  $("#mass_bottle_xl").val(mass.bottle_xl);
+  $("#mass_bottle_xl").val(mass.bottle_xl.toFixed(1));
 
   let bottle = mass.bottle_xxs + mass.bottle_xs + mass.bottle_s + mass.bottle_m + mass.bottle_l + mass.bottle_xl;
-  $("#total_bottle").text(bottle);  
+  $("#total_bottle").text(bottle.toFixed(1));  
 
   // plastic container
   mass.container_xxs = ($("#qty_container_xxs").val() * average_mass.container_xxs)
-  $("#mass_container_xxs").val(mass.container_xxs);
+  $("#mass_container_xxs").val(mass.container_xxs.toFixed(1));
 
   mass.container_xs = ($("#qty_container_xs").val() * average_mass.container_xs)
-  $("#mass_container_xs").val(mass.container_xs);
+  $("#mass_container_xs").val(mass.container_xs.toFixed(1));
 
   mass.container_s = ($("#qty_container_s").val() * average_mass.container_s)
-  $("#mass_container_s").val(mass.container_s);
+  $("#mass_container_s").val(mass.container_s.toFixed(1));
 
   mass.container_m = ($("#qty_container_m").val() * average_mass.container_m)
-  $("#mass_container_m").val(mass.container_m);
+  $("#mass_container_m").val(mass.container_m.toFixed(1));
 
   mass.container_l = ($("#qty_container_l").val() * average_mass.container_l)
-  $("#mass_container_l").val(mass.container_l);
+  $("#mass_container_l").val(mass.container_l.toFixed(1));
 
   mass.container_xl = ($("#qty_container_xl").val() * average_mass.container_xl )
-  $("#mass_container_xl").val(mass.container_xl);
+  $("#mass_container_xl").val(mass.container_xl.toFixed(1));
 
   let container = mass.container_xxs + mass.container_xs + mass.container_s + mass.container_m + mass.container_l + mass.container_xl;
-  $("#total_container").text(container);  
+  $("#total_container").text(container.toFixed(1));  
 
     // Cover/packaging
     mass.cover_xxs = ($("#qty_cover_xxs").val() * average_mass.cover_xxs)
-  $("#mass_cover_xxs").val(mass.cover_xxs);
+  $("#mass_cover_xxs").val(mass.cover_xxs.toFixed(1));
 
   mass.cover_xs = ($("#qty_cover_xs").val() * average_mass.cover_xs)
-  $("#mass_cover_xs").val(mass.cover_xs);
+  $("#mass_cover_xs").val(mass.cover_xs.toFixed(1));
 
   mass.cover_s = ($("#qty_cover_s").val() * average_mass.cover_s)
-  $("#mass_cover_s").val(mass.cover_s);
+  $("#mass_cover_s").val(mass.cover_s.toFixed(1));
 
   mass.cover_m = ($("#qty_cover_m").val() * average_mass.cover_m)
-  $("#mass_cover_m").val(mass.cover_m);
+  $("#mass_cover_m").val(mass.cover_m.toFixed(1));
 
   mass.cover_l = ($("#qty_cover_l").val() * average_mass.cover_l)
-  $("#mass_cover_l").val(mass.cover_l);
+  $("#mass_cover_l").val(mass.cover_l.toFixed(1));
 
   mass.cover_xl = ($("#qty_cover_xl").val() * average_mass.cover_xl )
-  $("#mass_cover_xl").val(mass.cover_xl);
+  $("#mass_cover_xl").val(mass.cover_xl.toFixed(1));
 
   let cover = mass.cover_xxs + mass.cover_xs + mass.cover_s + mass.cover_m + mass.cover_l + mass.cover_xl;
-  $("#total_cover").text(cover);  
+  $("#total_cover").text(cover.toFixed(1));  
 
   // gloves
   mass.gloves_xxs = ($("#qty_gloves_xxs").val() * average_mass.gloves_xxs)
-  $("#mass_gloves_xxs").val(mass.gloves_xxs);
+  $("#mass_gloves_xxs").val(mass.gloves_xxs.toFixed(1));
 
   mass.gloves_xs = ($("#qty_gloves_xs").val() * average_mass.gloves_xs)
-  $("#mass_gloves_xs").val(mass.gloves_xs);
+  $("#mass_gloves_xs").val(mass.gloves_xs.toFixed(1));
 
   mass.gloves_s = ($("#qty_gloves_s").val() * average_mass.gloves_s)
-  $("#mass_gloves_s").val(mass.gloves_s);
+  $("#mass_gloves_s").val(mass.gloves_s.toFixed(1));
 
   mass.gloves_m = ($("#qty_gloves_m").val() * average_mass.gloves_m)
-  $("#mass_gloves_m").val(mass.gloves_m);
+  $("#mass_gloves_m").val(mass.gloves_m.toFixed(1));
 
   mass.gloves_l = ($("#qty_gloves_l").val() * average_mass.gloves_l)
-  $("#mass_gloves_l").val(mass.gloves_l);
+  $("#mass_gloves_l").val(mass.gloves_l.toFixed(1));
 
   mass.gloves_xl = ($("#qty_gloves_xl").val() * average_mass.gloves_xl )
-  $("#mass_gloves_xl").val(mass.gloves_xl);
+  $("#mass_gloves_xl").val(mass.gloves_xl.toFixed(1));
 
   let gloves = mass.gloves_xxs + mass.gloves_xs + mass.gloves_s + mass.gloves_m + mass.gloves_l + mass.gloves_xl;
-  $("#total_gloves").text(gloves);  
+  $("#total_gloves").text(gloves.toFixed(1));  
 
   // rope
   mass.rope_xxs = ($("#qty_rope_xxs").val() * average_mass.rope_xxs)
-  $("#mass_rope_xxs").val(mass.rope_xxs);
+  $("#mass_rope_xxs").val(mass.rope_xxs.toFixed(1));
 
   mass.rope_xs = ($("#qty_rope_xs").val() * average_mass.rope_xs)
-  $("#mass_rope_xs").val(mass.rope_xs);
+  $("#mass_rope_xs").val(mass.rope_xs.toFixed(1));
 
   mass.rope_s = ($("#qty_rope_s").val() * average_mass.rope_s)
-  $("#mass_rope_s").val(mass.rope_s);
+  $("#mass_rope_s").val(mass.rope_s.toFixed(1));
 
   mass.rope_m = ($("#qty_rope_m").val() * average_mass.rope_m)
-  $("#mass_rope_m").val(mass.rope_m);
+  $("#mass_rope_m").val(mass.rope_m.toFixed(1));
 
   mass.rope_l = ($("#qty_rope_l").val() * average_mass.rope_l)
-  $("#mass_rope_l").val(mass.rope_l);
+  $("#mass_rope_l").val(mass.rope_l.toFixed(1));
 
   mass.rope_xl = ($("#qty_rope_xl").val() * average_mass.rope_xl )
-  $("#mass_rope_xl").val(mass.rope_xl);
+  $("#mass_rope_xl").val(mass.rope_xl.toFixed(1));
 
   let rope = mass.rope_xxs + mass.rope_xs + mass.rope_s + mass.rope_m + mass.rope_l + mass.rope_xl;
-  $("#total_rope").text(rope);  
+  $("#total_rope").text(rope.toFixed(1));  
 
   // net
   mass.net_xxs = ($("#qty_net_xxs").val() * average_mass.net_xxs)
-  $("#mass_net_xxs").val(mass.net_xxs);
+  $("#mass_net_xxs").val(mass.net_xxs.toFixed(1));
 
   mass.net_xs = ($("#qty_net_xs").val() * average_mass.net_xs)
-  $("#mass_net_xs").val(mass.net_xs);
+  $("#mass_net_xs").val(mass.net_xs.toFixed(1));
 
   mass.net_s = ($("#qty_net_s").val() * average_mass.net_s)
-  $("#mass_net_s").val(mass.net_s);
+  $("#mass_net_s").val(mass.net_s.toFixed(1));
 
   mass.net_m = ($("#qty_net_m").val() * average_mass.net_m)
-  $("#mass_net_m").val(mass.net_m);
+  $("#mass_net_m").val(mass.net_m.toFixed(1));
 
   mass.net_l = ($("#qty_net_l").val() * average_mass.net_l)
-  $("#mass_net_l").val(mass.net_l);
+  $("#mass_net_l").val(mass.net_l.toFixed(1));
 
   mass.net_xl = ($("#qty_net_xl").val() * average_mass.net_xl )
-  $("#mass_net_xl").val(mass.net_xl);
+  $("#mass_net_xl").val(mass.net_xl.toFixed(1));
 
   let net = mass.net_xxs + mass.net_xs + mass.net_s + mass.net_m + mass.net_l + mass.net_xl;
-  $("#total_net").text(net);  
+  $("#total_net").text(net.toFixed(1));  
 
   // boxes_plastic
   mass.boxes_plastic_m = ($("#qty_boxes_plastic_m").val() * average_mass.boxes_plastic_m)
-  $("#mass_boxes_plastic_m").val(mass.boxes_plastic_m);
+  $("#mass_boxes_plastic_m").val(mass.boxes_plastic_m.toFixed(1));
 
   mass.boxes_plastic_l = ($("#qty_boxes_plastic_l").val() * average_mass.boxes_plastic_l)
-  $("#mass_boxes_plastic_l").val(mass.boxes_plastic_l);
+  $("#mass_boxes_plastic_l").val(mass.boxes_plastic_l.toFixed(1));
 
   mass.boxes_plastic_xl = ($("#qty_boxes_plastic_xl").val() * average_mass.boxes_plastic_xl )
-  $("#mass_boxes_plastic_xl").val(mass.boxes_plastic_xl);
+  $("#mass_boxes_plastic_xl").val(mass.boxes_plastic_xl.toFixed(1));
 
   let boxes_plastic = mass.boxes_plastic_m + mass.boxes_plastic_l + mass.boxes_plastic_xl;
-  $("#total_boxes_plastic").text(boxes_plastic);  
+  $("#total_boxes_plastic").text(boxes_plastic.toFixed(1));  
 
   // boxes_polystyrene
 
   mass.boxes_polystyrene_m = ($("#qty_boxes_polystyrene_m").val() * average_mass.boxes_polystyrene_m)
-  $("#mass_boxes_polystyrene_m").val(mass.boxes_polystyrene_m);
+  $("#mass_boxes_polystyrene_m").val(mass.boxes_polystyrene_m.toFixed(1));
 
   mass.boxes_polystyrene_l = ($("#qty_boxes_polystyrene_l").val() * average_mass.boxes_polystyrene_l)
-  $("#mass_boxes_polystyrene_l").val(mass.boxes_polystyrene_l);
+  $("#mass_boxes_polystyrene_l").val(mass.boxes_polystyrene_l.toFixed(1));
 
   mass.boxes_polystyrene_xl = ($("#qty_boxes_polystyrene_xl").val() * average_mass.boxes_polystyrene_xl )
-  $("#mass_boxes_polystyrene_xl").val(mass.boxes_polystyrene_xl);
+  $("#mass_boxes_polystyrene_xl").val(mass.boxes_polystyrene_xl.toFixed(1));
 
   let boxes_polystyrene =mass.boxes_polystyrene_m + mass.boxes_polystyrene_l + mass.boxes_polystyrene_xl;
-  $("#total_boxes_polystyrene").text(boxes_polystyrene);  
+  $("#total_boxes_polystyrene").text(boxes_polystyrene.toFixed(1));  
 
     // buoys
 
   mass.buoys_m = ($("#qty_buoys_m").val() * average_mass.buoys_m)
-  $("#mass_buoys_m").val(mass.buoys_m);
+  $("#mass_buoys_m").val(mass.buoys_m.toFixed(1));
 
   mass.buoys_l = ($("#qty_buoys_l").val() * average_mass.buoys_l)
-  $("#mass_buoys_l").val(mass.buoys_l);
+  $("#mass_buoys_l").val(mass.buoys_l.toFixed(1));
 
   mass.buoys_xl = ($("#qty_buoys_xl").val() * average_mass.buoys_xl )
-  $("#mass_buoys_xl").val(mass.buoys_xl);
+  $("#mass_buoys_xl").val(mass.buoys_xl.toFixed(1));
 
   let buoys = mass.buoys_m + mass.buoys_l + mass.buoys_xl;
-  $("#total_buoys").text(buoys);  
+  $("#total_buoys").text(buoys.toFixed(1));  
 
   // sheets
   mass.sheets_xxs = ($("#qty_sheets_xxs").val() * average_mass.sheets_xxs)
-  $("#mass_sheets_xxs").val(mass.sheets_xxs);
+  $("#mass_sheets_xxs").val(mass.sheets_xxs.toFixed(1));
 
   mass.sheets_xs = ($("#qty_sheets_xs").val() * average_mass.sheets_xs)
-  $("#mass_sheets_xs").val(mass.sheets_xs);
+  $("#mass_sheets_xs").val(mass.sheets_xs.toFixed(1));
 
   mass.sheets_s = ($("#qty_sheets_s").val() * average_mass.sheets_s)
-  $("#mass_sheets_s").val(mass.sheets_s);
+  $("#mass_sheets_s").val(mass.sheets_s.toFixed(1));
 
   mass.sheets_m = ($("#qty_sheets_m").val() * average_mass.sheets_m)
-  $("#mass_sheets_m").val(mass.sheets_m);
+  $("#mass_sheets_m").val(mass.sheets_m.toFixed(1));
 
   mass.sheets_l = ($("#qty_sheets_l").val() * average_mass.sheets_l)
-  $("#mass_sheets_l").val(mass.sheets_l);
+  $("#mass_sheets_l").val(mass.sheets_l.toFixed(1));
 
   mass.sheets_xl = ($("#qty_sheets_xl").val() * average_mass.sheets_xl )
-  $("#mass_sheets_xl").val(mass.sheets_xl);
+  $("#mass_sheets_xl").val(mass.sheets_xl.toFixed(1));
 
   let sheets = mass.sheets_xxs + mass.sheets_xs + mass.sheets_s + mass.sheets_m + mass.sheets_l + mass.sheets_xl;
-  $("#total_sheets").text(sheets);  
+  $("#total_sheets").text(sheets.toFixed(1));  
 
   // foam
   mass.foam_xxs = ($("#qty_foam_xxs").val() * average_mass.foam_xxs)
-  $("#mass_foam_xxs").val(mass.foam_xxs);
+  $("#mass_foam_xxs").val(mass.foam_xxs.toFixed(1));
 
   mass.foam_xs = ($("#qty_foam_xs").val() * average_mass.foam_xs)
-  $("#mass_foam_xs").val(mass.foam_xs);
+  $("#mass_foam_xs").val(mass.foam_xs.toFixed(1));
 
   mass.foam_s = ($("#qty_foam_s").val() * average_mass.foam_s)
-  $("#mass_foam_s").val(mass.foam_s);
+  $("#mass_foam_s").val(mass.foam_s.toFixed(1));
 
   mass.foam_m = ($("#qty_foam_m").val() * average_mass.foam_m)
-  $("#mass_foam_m").val(mass.foam_m);
+  $("#mass_foam_m").val(mass.foam_m.toFixed(1));
 
   mass.foam_l = ($("#qty_foam_l").val() * average_mass.foam_l)
-  $("#mass_foam_l").val(mass.foam_l);
+  $("#mass_foam_l").val(mass.foam_l.toFixed(1));
 
   mass.foam_xl = ($("#qty_foam_xl").val() * average_mass.foam_xl )
-  $("#mass_foam_xl").val(mass.foam_xl);
+  $("#mass_foam_xl").val(mass.foam_xl.toFixed(1));
 
   let foam = mass.foam_xxs + mass.foam_xs + mass.foam_s + mass.foam_m + mass.foam_l + mass.foam_xl;
-  $("#total_foam").text(foam);  
+  $("#total_foam").text(foam.toFixed(1));  
 
   // plastic_pieces
   mass.plastic_pieces_xxs = ($("#qty_plastic_pieces_xxs").val() * average_mass.plastic_pieces_xxs)
-  $("#mass_plastic_pieces_xxs").val(mass.plastic_pieces_xxs);
+  $("#mass_plastic_pieces_xxs").val(mass.plastic_pieces_xxs.toFixed(1));
 
   mass.plastic_pieces_xs = ($("#qty_plastic_pieces_xs").val() * average_mass.plastic_pieces_xs)
-  $("#mass_plastic_pieces_xs").val(mass.plastic_pieces_xs);
+  $("#mass_plastic_pieces_xs").val(mass.plastic_pieces_xs.toFixed(1));
 
   mass.plastic_pieces_s = ($("#qty_plastic_pieces_s").val() * average_mass.plastic_pieces_s)
-  $("#mass_plastic_pieces_s").val(mass.plastic_pieces_s);
+  $("#mass_plastic_pieces_s").val(mass.plastic_pieces_s.toFixed(1));
 
   mass.plastic_pieces_m = ($("#qty_plastic_pieces_m").val() * average_mass.plastic_pieces_m)
-  $("#mass_plastic_pieces_m").val(mass.plastic_pieces_m);
+  $("#mass_plastic_pieces_m").val(mass.plastic_pieces_m.toFixed(1));
 
   mass.plastic_pieces_l = ($("#qty_plastic_pieces_l").val() * average_mass.plastic_pieces_l)
-  $("#mass_plastic_pieces_l").val(mass.plastic_pieces_l);
+  $("#mass_plastic_pieces_l").val(mass.plastic_pieces_l.toFixed(1));
 
   mass.plastic_pieces_xl = ($("#qty_plastic_pieces_xl").val() * average_mass.plastic_pieces_xl )
-  $("#mass_plastic_pieces_xl").val(mass.plastic_pieces_xl);
+  $("#mass_plastic_pieces_xl").val(mass.plastic_pieces_xl.toFixed(1));
 
   let plastic_pieces = mass.plastic_pieces_xxs + mass.plastic_pieces_xs + mass.plastic_pieces_s + mass.plastic_pieces_m + mass.plastic_pieces_l + mass.plastic_pieces_xl;
-  $("#total_plastic_pieces").text(plastic_pieces);  
+  $("#total_plastic_pieces").text(plastic_pieces.toFixed(1));  
 
     // polystyrene_pieces
     mass.polystyrene_pieces_xxs = ($("#qty_polystyrene_pieces_xxs").val() * average_mass.polystyrene_pieces_xxs)
-  $("#mass_polystyrene_pieces_xxs").val(mass.polystyrene_pieces_xxs);
+  $("#mass_polystyrene_pieces_xxs").val(mass.polystyrene_pieces_xxs.toFixed(1));
 
   mass.polystyrene_pieces_xs = ($("#qty_polystyrene_pieces_xs").val() * average_mass.polystyrene_pieces_xs)
-  $("#mass_polystyrene_pieces_xs").val(mass.polystyrene_pieces_xs);
+  $("#mass_polystyrene_pieces_xs").val(mass.polystyrene_pieces_xs.toFixed(1));
 
   mass.polystyrene_pieces_s = ($("#qty_polystyrene_pieces_s").val() * average_mass.polystyrene_pieces_s)
-  $("#mass_polystyrene_pieces_s").val(mass.polystyrene_pieces_s);
+  $("#mass_polystyrene_pieces_s").val(mass.polystyrene_pieces_s.toFixed(1));
 
   mass.polystyrene_pieces_m = ($("#qty_polystyrene_pieces_m").val() * average_mass.polystyrene_pieces_m)
-  $("#mass_polystyrene_pieces_m").val(mass.polystyrene_pieces_m);
+  $("#mass_polystyrene_pieces_m").val(mass.polystyrene_pieces_m.toFixed(1));
 
   mass.polystyrene_pieces_l = ($("#qty_polystyrene_pieces_l").val() * average_mass.polystyrene_pieces_l)
-  $("#mass_polystyrene_pieces_l").val(mass.polystyrene_pieces_l);
+  $("#mass_polystyrene_pieces_l").val(mass.polystyrene_pieces_l.toFixed(1));
 
   mass.polystyrene_pieces_xl = ($("#qty_polystyrene_pieces_xl").val() * average_mass.polystyrene_pieces_xl )
-  $("#mass_polystyrene_pieces_xl").val(mass.polystyrene_pieces_xl);
+  $("#mass_polystyrene_pieces_xl").val(mass.polystyrene_pieces_xl.toFixed(1));
 
   let polystyrene_pieces = mass.polystyrene_pieces_xxs + mass.polystyrene_pieces_xs + mass.polystyrene_pieces_s + mass.polystyrene_pieces_m + mass.polystyrene_pieces_l + mass.polystyrene_pieces_xl;
-  $("#total_polystyrene_pieces").text(polystyrene_pieces);  
+  $("#total_polystyrene_pieces").text(polystyrene_pieces.toFixed(1));  
 
   // cloth
   mass.cloth_xxs = ($("#qty_cloth_xxs").val() * average_mass.cloth_xxs)
-  $("#mass_cloth_xxs").val(mass.cloth_xxs);
+  $("#mass_cloth_xxs").val(mass.cloth_xxs.toFixed(1));
 
   mass.cloth_xs = ($("#qty_cloth_xs").val() * average_mass.cloth_xs)
-  $("#mass_cloth_xs").val(mass.cloth_xs);
+  $("#mass_cloth_xs").val(mass.cloth_xs.toFixed(1));
 
   mass.cloth_s = ($("#qty_cloth_s").val() * average_mass.cloth_s)
-  $("#mass_cloth_s").val(mass.cloth_s);
+  $("#mass_cloth_s").val(mass.cloth_s.toFixed(1));
 
   mass.cloth_m = ($("#qty_cloth_m").val() * average_mass.cloth_m)
-  $("#mass_cloth_m").val(mass.cloth_m);
+  $("#mass_cloth_m").val(mass.cloth_m.toFixed(1));
 
   mass.cloth_l = ($("#qty_cloth_l").val() * average_mass.cloth_l)
-  $("#mass_cloth_l").val(mass.cloth_l);
+  $("#mass_cloth_l").val(mass.cloth_l.toFixed(1));
 
   mass.cloth_xl = ($("#qty_cloth_xl").val() * average_mass.cloth_xl )
-  $("#mass_cloth_xl").val(mass.cloth_xl);
+  $("#mass_cloth_xl").val(mass.cloth_xl.toFixed(1));
 
   let cloth = mass.cloth_xxs + mass.cloth_xs + mass.cloth_s + mass.cloth_m + mass.cloth_l + mass.cloth_xl;
-  $("#total_cloth").text(cloth);  
+  $("#total_cloth").text(cloth.toFixed(1));  
 
   // granules
   mass.granules_xxs = ($("#qty_granules_xxs").val() * average_mass.granules_xxs)
-  $("#mass_granules_xxs").val(mass.granules_xxs);
+  $("#mass_granules_xxs").val(mass.granules_xxs.toFixed(1));
 
   mass.granules_xs = ($("#qty_granules_xs").val() * average_mass.granules_xs)
-  $("#mass_granules_xs").val(mass.granules_xs);
+  $("#mass_granules_xs").val(mass.granules_xs.toFixed(1));
 
   mass.granules_s = ($("#qty_granules_s").val() * average_mass.granules_s)
-  $("#mass_granules_s").val(mass.granules_s);
+  $("#mass_granules_s").val(mass.granules_s.toFixed(1));
 
   mass.granules_m = ($("#qty_granules_m").val() * average_mass.granules_m)
-  $("#mass_granules_m").val(mass.granules_m);
+  $("#mass_granules_m").val(mass.granules_m.toFixed(1));
 
   mass.granules_l = ($("#qty_granules_l").val() * average_mass.granules_l)
-  $("#mass_granules_l").val(mass.granules_l);
+  $("#mass_granules_l").val(mass.granules_l.toFixed(1));
 
   mass.granules_xl = ($("#qty_granules_xl").val() * average_mass.granules_xl )
-  $("#mass_granules_xl").val(mass.granules_xl);
+  $("#mass_granules_xl").val(mass.granules_xl.toFixed(1));
 
   let granules = mass.granules_xxs + mass.granules_xs + mass.granules_s + mass.granules_m + mass.granules_l + mass.granules_xl;
-  $("#total_granules").text(granules);  
+  $("#total_granules").text(granules.toFixed(1));  
 
   // other
   mass.other_xxs = ($("#qty_other_xxs").val() * average_mass.other_xxs)
-  $("#mass_other_xxs").val(mass.other_xxs);
+  $("#mass_other_xxs").val(mass.other_xxs.toFixed(1));
 
   mass.other_xs = ($("#qty_other_xs").val() * average_mass.other_xs)
-  $("#mass_other_xs").val(mass.other_xs);
+  $("#mass_other_xs").val(mass.other_xs.toFixed(1));
 
   mass.other_s = ($("#qty_other_s").val() * average_mass.other_s)
-  $("#mass_other_s").val(mass.other_s);
+  $("#mass_other_s").val(mass.other_s.toFixed(1));
 
   mass.other_m = ($("#qty_other_m").val() * average_mass.other_m)
-  $("#mass_other_m").val(mass.other_m);
+  $("#mass_other_m").val(mass.other_m.toFixed(1));
 
   mass.other_l = ($("#qty_other_l").val() * average_mass.other_l)
-  $("#mass_other_l").val(mass.other_l);
+  $("#mass_other_l").val(mass.other_l.toFixed(1));
 
   mass.other_xl = ($("#qty_other_xl").val() * average_mass.other_xl )
-  $("#mass_other_xl").val(mass.other_xl);
+  $("#mass_other_xl").val(mass.other_xl.toFixed(1));
 
   let other = mass.other_xxs + mass.other_xs + mass.other_s + mass.other_m + mass.other_l + mass.other_xl;
-  $("#total_other").text(other);  
+  $("#total_other").text(other.toFixed(1));  
 
 
 
   let total = bag + bottle + container + cover + gloves + rope + net + boxes_plastic + boxes_polystyrene + buoys + sheets + foam + plastic_pieces + polystyrene_pieces + cloth + granules + other ;
 
  
-  $("#total_value").text(total);  
+  $("#total_value").text(total.toFixed(1));  
   
 }
 
@@ -494,8 +494,9 @@ $(function()
       <header>
         <div class="menu">
           <ul>
-            <li><a href="/Macroplastic-Mass-Calculator/index.html">Calculator</a></li>
-            <li><a href="/Macroplastic-Mass-Calculator/Form/index.html">Add your data</a></li>
+          <li><a href="/Macroplastic-Mass-Calculator/index.html">Calculator</a></li>
+          <li><a href="/Macroplastic-Mass-Calculator/Form/index.html">Add your data</a></li>
+          <li><a href="/Macroplastic-Mass-Calculator/Load/index.html">Add your data</a></li>
           </ul>
         </div>
       </header>
